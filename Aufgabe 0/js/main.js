@@ -5,5 +5,6 @@ function myFunction() {
         document.getElementById("demo").innerHTML =
             "¡Hola" + " " + person + "! What´s up?" + " " + "It´s all about the magic! :P";
     }
+    console.log("Hallo" + "" + person);
 }
 //# sourceMappingURL=main.js.map
