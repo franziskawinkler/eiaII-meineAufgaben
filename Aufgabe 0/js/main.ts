@@ -5,7 +5,6 @@ function nameEingeben() {
     /*Begrüßung der Person auf meiner Seite*/
     let _herzlichWillkommen: string= "Hallo," +""+ _nameDerPerson + ", herzlich Willkommen auf dieser Seite!";
     /*Ausgabe auch auf der Konsole*/
-    console.log("Hallo," +""+ _nameDerPerson + ", herzlich Willkommen auf dieser Seite!");
+    console.log(_herzlichWillkommen);
     document.getElementById("greeter").innerHTML=_herzlichWillkommen;
 }
-
