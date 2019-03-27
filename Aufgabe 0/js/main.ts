@@ -1,10 +1,11 @@
-/*Funktion für prompt und greeter*/
-function myFunction() {
-    var person = prompt("What´s your name?", "Tony Stark");
-    if (person != null) {
-        document.getElementById("demo").innerHTML =
-            "¡Hola"+" "+ person + "! What´s up?"+" "+"It´s all about the magic! :P";
-    }
-    console.log("Hallo"+""+person)
+/*Funktion, um Namen eingeben zu müssen */
+function nameEingeben() {
+    /*Variable vom Typ string; prompt-Box mit Namenseingabe*/
+    let _nameDerPerson: string = prompt("What´s your name?", "Tony Stark");
+    /*Begrüßung der Person auf meiner Seite*/
+    let _herzlichWillkommen: string= "Hallo," +""+ _nameDerPerson + ", herzlich Willkommen auf dieser Seite!";
+    /*Ausgabe auch auf der Konsole*/
+    console.log("Hallo," +""+ _nameDerPerson + ", herzlich Willkommen auf dieser Seite!");
+    document.getElementById("greeter").innerHTML=_herzlichWillkommen;
 }
 
