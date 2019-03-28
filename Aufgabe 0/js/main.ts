@@ -1,5 +1,5 @@
 /*Funktion, um Namen eingeben zu müssen */
-function nameEingeben() {
+function nameEingeben(): void {
     /*Variable vom Typ string; prompt-Box mit Namenseingabe*/
     let _nameDerPerson: string = prompt("What´s your name?", "Tony Stark");
     /*Begrüßung der Person auf meiner Seite*/
