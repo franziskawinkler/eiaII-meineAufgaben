@@ -1,0 +1,46 @@
+/*
+Aufgabe: <2, MauMau>
+Name: <Franziska Winkler>
+Matrikel: <260944>
+Datum: <07.04.2019>
+	
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+*/
+body {
+   background-color: rgb(89, 89, 245);
+    margin: 2em;
+}
+section div{
+    height: 298px;
+    width: 200px;
+    float: left;
+    margin: 2em;
+    border: 1px solid black;
+    background-color: white;
+}
+.karte.herz, .karte.karo{
+    color: red;
+}
+section img{
+    height: 50px;
+    width: 50px;
+    margin: 0.5rem;
+}
+section p{
+    font-size: 2em;
+    text-align: center;
+}
+.nachziehstapel{
+   margin-left: 50%;
+   background-color: black;
+}
+.handstapel{
+    border: 1px solid black;
+}
+@media only sreen and (min-width: 1024px){
+   body{
+       height: 100%;
+       width: 100%
+   }
+
+}
