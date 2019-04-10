@@ -16,6 +16,7 @@ body {
      float: left;
      margin: 2em;
      border: 1px solid black;
+     border-radius: 0.5em;
      background-color: white;
  }
  .karte.herz, .karte.karo{

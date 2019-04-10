@@ -1,160 +1,141 @@
-/*
-Aufgabe: <2, MauMau>
-Name: <Franziska Winkler>
-Matrikel: <260944>
-Datum: <07.04.2019>
-	
-Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-*/
-/*Interface für eine Karte*/
-interface Karte {
-    kartenArt: string;
-    kartenWert: string;
-}
-
-let herzSieben: Karte = {
+let herzSieben = {
     kartenArt: "herz",
     kartenWert: "Sieben"
-}
-
-let herzAcht: Karte = {
+};
+let herzAcht = {
     kartenArt: "herz",
     kartenWert: "Acht"
-}
-
-let herzNeun: Karte = {
+};
+let herzNeun = {
     kartenArt: "herz",
     kartenWert: "Neun"
-}
-let herzZehn: Karte = {
+};
+let herzZehn = {
     kartenArt: "herz",
     kartenWert: "Zehn"
-}
-let herzOber: Karte = {
+};
+let herzOber = {
     kartenArt: "herz",
     kartenWert: "Ober"
-}
-let herzUnter: Karte = {
+};
+let herzUnter = {
     kartenArt: "herz",
     kartenWert: "Unter"
-}
-let herzKönig: Karte = {
+};
+let herzKönig = {
     kartenArt: "herz",
     kartenWert: "König"
-}
-let herzAss: Karte = {
+};
+let herzAss = {
     kartenArt: "herz",
     kartenWert: "Ass"
-}
-let pikSieben: Karte = {
+};
+let pikSieben = {
     kartenArt: "pik",
     kartenWert: "Sieben"
-}
-let pikAcht: Karte = {
+};
+let pikAcht = {
     kartenArt: "pik",
     kartenWert: "Acht"
-}
-let pikNeun: Karte = {
+};
+let pikNeun = {
     kartenArt: "pik",
     kartenWert: "Neun"
-}
-let pikZehn: Karte = {
+};
+let pikZehn = {
     kartenArt: "pik",
     kartenWert: "Zehn"
-}
-let pikOber: Karte = {
+};
+let pikOber = {
     kartenArt: "pik",
     kartenWert: "Ober"
-}
-let pikUnter: Karte = {
+};
+let pikUnter = {
     kartenArt: "pik",
     kartenWert: "Unter"
-}
-let pikKönig: Karte = {
+};
+let pikKönig = {
     kartenArt: "pik",
     kartenWert: "König"
-}
-let pikAss: Karte = {
+};
+let pikAss = {
     kartenArt: "pik",
     kartenWert: "Ass"
-}
-let kreuzSieben: Karte = {
+};
+let kreuzSieben = {
     kartenArt: "kreuz",
     kartenWert: "Sieben",
-}
-let kreuzAcht: Karte = {
+};
+let kreuzAcht = {
     kartenArt: "kreuz",
     kartenWert: "Acht"
-}
-let kreuzNeun: Karte = {
+};
+let kreuzNeun = {
     kartenArt: "kreuz",
     kartenWert: "Neun"
-}
-let kreuzZehn: Karte = {
+};
+let kreuzZehn = {
     kartenArt: "kreuz",
     kartenWert: "Zehn"
-}
-let kreuzOber: Karte = {
+};
+let kreuzOber = {
     kartenArt: "kreuz",
     kartenWert: "Ober"
-}
-let kreuzUnter: Karte = {
+};
+let kreuzUnter = {
     kartenArt: "kreuz",
     kartenWert: "Unter"
-}
-let kreuzKönig: Karte = {
+};
+let kreuzKönig = {
     kartenArt: "kreuz",
     kartenWert: "König"
-}
-let kreuzAss: Karte = {
+};
+let kreuzAss = {
     kartenArt: "kreuz",
     kartenWert: "Ass"
-}
-let karoSieben: Karte = {
+};
+let karoSieben = {
     kartenArt: "karo",
     kartenWert: "Sieben"
-}
-let karoAcht: Karte = {
+};
+let karoAcht = {
     kartenArt: "karo",
     kartenWert: "Acht"
-}
-let karoNeun: Karte = {
+};
+let karoNeun = {
     kartenArt: "karo",
     kartenWert: "Neun"
-}
-let karoZehn: Karte = {
+};
+let karoZehn = {
     kartenArt: "karo",
     kartenWert: "Zehn"
-}
-let karoOber: Karte = {
+};
+let karoOber = {
     kartenArt: "karo",
     kartenWert: "Ober"
-}
-let karoUnter: Karte = {
+};
+let karoUnter = {
     kartenArt: "karo",
     kartenWert: "Unter"
-}
-let karoKönig: Karte = {
+};
+let karoKönig = {
     kartenArt: "karo",
     kartenWert: "König"
-}
-let karoAss: Karte = {
+};
+let karoAss = {
     kartenArt: "karo",
     kartenWert: "Ass"
-}
-
-
+};
 /*Array mit allen vorhandenen Spielkarten anlegen*/
-let komplettesKartenset: Karte[] = [herzSieben, herzAcht, herzNeun, herzZehn, herzOber, herzUnter, herzKönig, herzAss, karoSieben, karoAcht, karoNeun, karoZehn, karoOber, karoUnter, karoKönig, karoAss, kreuzSieben, kreuzAcht, kreuzNeun, kreuzZehn, kreuzOber, kreuzUnter, kreuzKönig, kreuzAss, pikSieben, pikAcht, pikNeun, pikZehn, pikOber, pikUnter, pikKönig, pikAss];
-
+let komplettesKartenset = [herzSieben, herzAcht, herzNeun, herzZehn, herzOber, herzUnter, herzKönig, herzAss, karoSieben, karoAcht, karoNeun, karoZehn, karoOber, karoUnter, karoKönig, karoAss, kreuzSieben, kreuzAcht, kreuzNeun, kreuzZehn, kreuzOber, kreuzUnter, kreuzKönig, kreuzAss, pikSieben, pikAcht, pikNeun, pikZehn, pikOber, pikUnter, pikKönig, pikAss];
 /*Array für Handkarten */
-let handKarten: Karte[] = [];
-let anzahlDerHandkarten: number = 0;
+let handKarten = [];
+let anzahlDerHandkarten = 0;
 /*Funktion, um Anfrage beim Laden der Website zu stellen, wie viele Handkarten gezogen werden sollen*/
 function anzahlHandkarten() {
     if (anzahlDerHandkarten == 0) {
         /*Variable vom Typ number; prompt-Box mit Anfrage zur Anzahl der Handkarten*/
-        let menge: number = parseInt(prompt("Mit wie vielen Handkarten möchtest du spielen?"));
+        let menge = parseInt(prompt("Mit wie vielen Handkarten möchtest du spielen?"));
         if (menge <= 31 && menge >= 1) {
             anzahlDerHandkarten = menge;
             handkartenAuswählen();
@@ -168,19 +149,17 @@ function anzahlHandkarten() {
     }
 }
 /*Karten auswählen, zunächst alle Handkarten, danach ablagestapek und nachlegestapel */
-function handkartenAuswählen(): void {
-    console.log('auswählen')
+function handkartenAuswählen() {
+    console.log('auswählen');
     console.log(anzahlDerHandkarten);
     /*for-Schleife, um alle gewünschten handkarten auslegen zu können */
-    for (let i: number = 0; i < anzahlDerHandkarten; i++) {
+    for (let i = 0; i < anzahlDerHandkarten; i++) {
         let karte = karteZiehen();
-
         //HTML als string aufbauen
         //neues DOM Element
         let handKarte = document.createElement("div");
         //html als string einfügen
-        let html: string =
-            `
+        let html = `
         </section>
         <!--2. section für die Handkarten-->
         <section class="handkarten">
@@ -197,16 +176,15 @@ function handkartenAuswählen(): void {
     }
     /* Ablagestapel div erstellen */
     let ablagestapel = document.createElement("div");
-/*eine beliebige Karte für den Ablagestapell ziehen, um das Spiel beginnen zu können */
-    let karte: Karte = karteZiehen()
-    let kartenHtml: string =
-        `
+    /*eine beliebige Karte für den Ablagestapell ziehen, um das Spiel beginnen zu können */
+    let karte = karteZiehen();
+    let kartenHtml = `
             <!--erstes div für den Ablagestapel-->
             <section class="nachziehstapel">
-            <div class="karte">
-            <img class="article" src="img/${karte.kartenArt}.png">
-            <p>${karte.kartenWert}</p>
-            </div>
+                <div class="karte">
+                    <img class="article" src="img/${karte.kartenArt}.png">
+                    <p>${karte.kartenWert}</p>
+                </div>
             </section>
         `;
     //auf innerHTML zugreifen
@@ -215,9 +193,7 @@ function handkartenAuswählen(): void {
     /*Nachlegestapel erstellen, wenn genügend Karten da sind-> if bedingung */
     if (komplettesKartenset.length > 0) {
         let nachlegestapel = document.createElement("div");
-
-        let nachziehen: string =
-            `
+        let nachziehen = `
         <!--zweites div für den Nachlegestapel-->
         <section class="nachziehstapel">
         <div class="karte">
@@ -230,14 +206,27 @@ function handkartenAuswählen(): void {
     }
 }
 /*Funktion, um eine beliebige Karte zu ziehen*/
-function karteZiehen(): Karte {
-    /*eine beliebige Nummer aus dem Array rasuziehen, um eine beliebige Karte zu gewinnen */ 
-    let random: number = Math.floor(Math.random() * komplettesKartenset.length);
+function karteZiehen() {
+    /*eine beliebige Nummer aus dem Array rasuziehen, um eine beliebige Karte zu gewinnen */
+    let random = Math.floor(Math.random() * komplettesKartenset.length);
     console.log('random Number: ' + random);
     let karte = komplettesKartenset[random];
     console.log(karte.kartenWert);
-
     komplettesKartenset.splice(random, 1);
     console.log(komplettesKartenset.length);
     return karte;
 }
+/*Klick-Events*/
+window.addEventListener("load", geklickt);
+/*Nach dem Klick auf eine Handkarte soll die Funktion karteAblegen aufgerufen werden */
+function geklickt(_karteGeklickt) {
+    console.log("test");
+    let klickeHandkarte = document.getElementById("handstapel");
+    klickeHandkarte.addEventListener("click", karteAblegen);
+}
+/*Funktion, bei der die Handkarte vom Handkartendeck */
+function karteAblegen() {
+    let wegnehmen = document.getElementById('div');
+    wegnehmen.remove();
+}
+//# sourceMappingURL=main.js.map

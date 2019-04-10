@@ -197,16 +197,16 @@ function handkartenAuswählen(): void {
     }
     /* Ablagestapel div erstellen */
     let ablagestapel = document.createElement("div");
-/*eine beliebige Karte für den Ablagestapell ziehen, um das Spiel beginnen zu können */
+    /*eine beliebige Karte für den Ablagestapell ziehen, um das Spiel beginnen zu können */
     let karte: Karte = karteZiehen()
     let kartenHtml: string =
         `
             <!--erstes div für den Ablagestapel-->
             <section class="nachziehstapel">
-            <div class="karte">
-            <img class="article" src="img/${karte.kartenArt}.png">
-            <p>${karte.kartenWert}</p>
-            </div>
+                <div class="karte">
+                    <img class="article" src="img/${karte.kartenArt}.png">
+                    <p>${karte.kartenWert}</p>
+                </div>
             </section>
         `;
     //auf innerHTML zugreifen
@@ -231,7 +231,7 @@ function handkartenAuswählen(): void {
 }
 /*Funktion, um eine beliebige Karte zu ziehen*/
 function karteZiehen(): Karte {
-    /*eine beliebige Nummer aus dem Array rasuziehen, um eine beliebige Karte zu gewinnen */ 
+    /*eine beliebige Nummer aus dem Array rasuziehen, um eine beliebige Karte zu gewinnen */
     let random: number = Math.floor(Math.random() * komplettesKartenset.length);
     console.log('random Number: ' + random);
     let karte = komplettesKartenset[random];
@@ -240,4 +240,18 @@ function karteZiehen(): Karte {
     komplettesKartenset.splice(random, 1);
     console.log(komplettesKartenset.length);
     return karte;
+}
+
+/*Klick-Events*/
+window.addEventListener("load", geklickt);
+/*Nach dem Klick auf eine Handkarte soll die Funktion karteAblegen aufgerufen werden */
+function geklickt(_karteGeklickt: Event): void {
+    console.log("test");
+    let klickeHandkarte: HTMLElement = document.getElementById("handstapel");
+    klickeHandkarte.addEventListener("click", karteAblegen);
+}
+/*Funktion, bei der die Handkarte vom Handkartendeck */
+function karteAblegen(): void {
+    let wegnehmen = document.getElementById('div');
+    wegnehmen.remove();
 }
