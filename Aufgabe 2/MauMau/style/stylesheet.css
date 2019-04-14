@@ -1,8 +1,8 @@
 /*
-Aufgabe: <2, MauMau>
+Aufgabe: <3, interaktives MauMau>
 Name: <Franziska Winkler>
 Matrikel: <260944>
-Datum: <07.04.2019>
+Datum: <14.04.2019>
 	
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
@@ -30,7 +30,7 @@ body {
      font-size: 2em;
      text-align: center;
  }
- .nachziehstapel{
+ .stapel{
     margin-left: 50%;
     background-color: black;
  }

@@ -1,11 +1,11 @@
 <!--
-Aufgabe: <2, MauMau>
+Aufgabe: <3, interaktives MauMau>
 Name: <Franziska Winkler>
 Matrikel: <260944>
-Datum: <07.04.2019>
+Datum: <14.04.2019>
 	
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
--->
+--> 
 <!DOCTYPE html>
 <html lang="de">
 
@@ -19,18 +19,16 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
     <script src="js/main.js"></script>
 </head>
 
-<body onload="anzahlHandkarten()">
+<body id="anzahlHandkarten">
     <h1>MauMau</h1>
     <div>
-        <div id="nachlegestapel">
+        <div id="container">
 
         </div>
         <div id="handstapel">
 
         </div>
-    </div>
-    <div>
-        <p class="button">Handkarten nach Farbe sortieren</p>
+        <button id="button">Sortiere deine Handkarten!</button>
     </div>
 </body>
 

@@ -1,8 +1,8 @@
 /*
-Aufgabe: <2, MauMau>
+Aufgabe: <3, interaktives MauMau>
 Name: <Franziska Winkler>
 Matrikel: <260944>
-Datum: <07.04.2019>
+Datum: <14.04.2019>
 	
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
@@ -16,7 +16,6 @@ body {
      float: left;
      margin: 2em;
      border: 1px solid black;
-     border-radius: 0.5em;
      background-color: white;
  }
  .karte.herz, .karte.karo{
@@ -31,12 +30,17 @@ body {
      font-size: 2em;
      text-align: center;
  }
- .nachziehstapel{
+.stapel{
     margin-left: 50%;
     background-color: black;
+    
  }
  .handstapel{
      border: 1px solid black;
+ }
+ h1{
+     color: white;
+     text-align: center;
  }
  @media only sreen and (min-width: 1024px){
     body{
