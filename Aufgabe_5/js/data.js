@@ -2,7 +2,7 @@
 Aufgabe: <5, Assoziative Arrays: Eisdealer>
 Name: <Franziska Winkler>
 Matrikel: <260944>
-Datum: <21.04.2019>
+Datum: <28.04.2019>
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
@@ -26,7 +26,7 @@ var eisdealer;
             { type: "checkbox", name: "topping", preis: 1.5, id: "Sahne" },
             { type: "checkbox", name: "topping", preis: 1.5, id: "Streusel" }
         ],
-        "sossen": [
+        "soßen": [
             { type: "radio", name: "soße", preis: 1, id: "Himbeersoße" },
             { type: "radio", name: "soße", preis: 1, id: "weiße Schokolade" },
             { type: "radio", name: "soße", preis: 1, id: "Schokolade" }

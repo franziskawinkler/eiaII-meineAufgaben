@@ -2,7 +2,7 @@
 Aufgabe: <5, Assoziative Arrays: Eisdealer>
 Name: <Franziska Winkler>
 Matrikel: <260944>
-Datum: <21.04.2019>
+Datum: <28.04.2019>
 	
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
@@ -126,6 +126,7 @@ namespace eisdealer {
     }
     //alte Funktionen 
     function handleInput(_event: Event): void {
+        debugger;
         gesamtPreis = 0;
         zusammenFassung = "";
         for (let i: number = 0; i < inputs.length; i++) {
