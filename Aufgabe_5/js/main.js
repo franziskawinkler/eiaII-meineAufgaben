@@ -3,142 +3,119 @@ Aufgabe: <5, Assoziative Arrays: Eisdealer>
 Name: <Franziska Winkler>
 Matrikel: <260944>
 Datum: <21.04.2019>
-	
+    
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
-
-namespace eisdealer {
-    let anzahl: number = 0;
-    let gesamtPreis: number = 0;
-    let inputs: HTMLCollectionOf<HTMLInputElement>;
-    let preisElement: HTMLSpanElement;
-    let zusammenfassungElement: HTMLElement;
-    let zusammenFassung: string = "";
-
-
+var eisdealer;
+(function (eisdealer) {
+    let anzahl = 0;
+    let gesamtPreis = 0;
+    let inputs;
+    let preisElement;
+    let zusammenfassungElement;
+    let zusammenFassung = "";
     window.addEventListener("load", init);
-
-    function init(_event: Event): void {
-        console.log(data);
+    function init(_event) {
+        console.log(eisdealer.data);
         console.log("init3");
-        writeHTML(data);
-        let fieldsets: HTMLCollectionOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
-        for (let i: number = 0; i < fieldsets.length; i++) {
-           
-            let fieldset: HTMLFieldSetElement = fieldsets[i];
+        writeHTML(eisdealer.data);
+        let fieldsets = document.getElementsByTagName("fieldset");
+        for (let i = 0; i < fieldsets.length; i++) {
+            let fieldset = fieldsets[i];
             fieldset.addEventListener("input", handleInput);
         }
-        let button: HTMLElement = document.getElementById("button");
+        let button = document.getElementById("button");
         button.addEventListener("click", validateForm);
         inputs = document.getElementsByTagName("input");
         preisElement = document.getElementById("preis-total");
         zusammenfassungElement = document.getElementById("zusammenfassung");
-
     }
-    function writeHTML(_data: eisdealerBlock): void {
-
-        let fieldsets: string = "";
-        let data: { [eisdealerBlock: string]: inhaltBlock[] } = _data;
+    function writeHTML(_data) {
+        let fieldsets = "";
+        let data = _data;
         for (let eisdealerBlock in data) {
             if (eisdealerBlock == "eissorten") {
-                let eissorten: inhaltBlock[] = data[eisdealerBlock];
-                let fieldset: string =
-                    `
+                let eissorten = data[eisdealerBlock];
+                let fieldset = `
                 <fieldset id="eissorten">
                 <legend> Unsere Eissorten </legend>
                 <p>Preis pro Kugel: 1€</p>`;
-
-                for (let i: number = 0; i < eissorten.length; i++) {
-                    let eissorte: inhaltBlock = eissorten[i];
+                for (let i = 0; i < eissorten.length; i++) {
+                    let eissorte = eissorten[i];
                     fieldset +=
                         `                   
                 <label for="schwarzeVanille">${eissorte.id}</label>
                 <input type="number" name="anzahlKugeln" value="0" id="${eissorte.id}" step="1" min="0" max="10" value="0" data-preis="1"/>
                 <br>`;
                 }
-
                 fieldsets += fieldset;
             }
-
             if (eisdealerBlock == "toppings") {
-                let toppings: inhaltBlock[] = data[eisdealerBlock];
-
-                let fieldset: string =
-                    `
+                let toppings = data[eisdealerBlock];
+                let fieldset = `
                 <fieldset id="toppings">
                 <legend>Toppings?</legend>
                 <p>Preis pro Topping: 1€</p>`;
-                for (let i: number = 0; i < toppings.length; i++) {
-                    let topping: inhaltBlock = toppings[i];
+                for (let i = 0; i < toppings.length; i++) {
+                    let topping = toppings[i];
                     fieldset +=
                         `                   
                         <input type="checkbox" name="topping" value="${topping.id}" id="${topping.id}" data-preis="1"/>
                         <label for="${topping.id}">${topping.id}</label>
                         <br>
                         `;
-                    
-
                 }
                 fieldsets += fieldset;
             }
             if (eisdealerBlock == "soßen") {
-                let soßen: inhaltBlock[] = data[eisdealerBlock];
-
-                let fieldset: string =
-                    `
+                let soßen = data[eisdealerBlock];
+                let fieldset = `
                         <p>Soßen-Toppings:</p>
                         <p>Soßentopping gibt´s gratis dazu:</p>`;
-                for (let i: number = 0; i < soßen.length; i++) {
-                    let soße: inhaltBlock = soßen[i];
+                for (let i = 0; i < soßen.length; i++) {
+                    let soße = soßen[i];
                     fieldset +=
                         `                   
                         <input type="radio" name="topping" value="${soße.id}" id="${soße.id}" data-preis="0"/>
                         <label for="${soße.id}">${soße.id}</label>
                         <br>
                         `;
-                    
-
                 }
                 fieldsets += fieldset;
             }
             if (eisdealerBlock == "wOb") {
-                let wOb: inhaltBlock[] = data[eisdealerBlock];
-                let fieldset: string =
-                    `
+                let wOb = data[eisdealerBlock];
+                let fieldset = `
                     <fieldset id="wOb">
                     <legend>Waffel oder Becher?</legend>`;
-                for (let i: number = 0; i < wOb.length; i++) {
-                    let behälter: inhaltBlock = wOb[i];
+                for (let i = 0; i < wOb.length; i++) {
+                    let behälter = wOb[i];
                     fieldset +=
                         `                   
                         <input type="radio" name="wOb" value="${behälter.id}" id="${behälter.id}" data-preis="0"/>
                         <label for="${behälter.id}">${behälter.id}</label>
                         <br>`;
-                   
-
-
                 }
                 fieldsets += fieldset;
             }
             document.getElementById("fieldset").innerHTML = fieldsets;
         }
-
     }
     //alte Funktionen 
-    function handleInput(_event: Event): void {
+    function handleInput(_event) {
         gesamtPreis = 0;
         zusammenFassung = "";
-        for (let i: number = 0; i < inputs.length; i++) {
-           
+        for (let i = 0; i < inputs.length; i++) {
             anzahl = 0;
-            let input: HTMLInputElement = inputs[i];
-            let preis: number = +input.getAttribute("data-preis");
+            let input = inputs[i];
+            let preis = +input.getAttribute("data-preis");
             if (preis) {
                 if (input.type == "checkbox") {
                     if (input.checked) {
                         anzahl = 1;
                     }
-                } else {
+                }
+                else {
                     anzahl = +input.value;
                 }
                 gesamtPreis = gesamtPreis + preis * anzahl;
@@ -151,14 +128,11 @@ namespace eisdealer {
         zusammenfassungElement.innerText = zusammenFassung;
         preisElement.innerText = String(gesamtPreis.toFixed(2));
     }
-
-    function validateForm(): void {
-        for (let i: number = 0; i < inputs.length; i++) {
-            let input: HTMLInputElement = inputs[i];
+    function validateForm() {
+        for (let i = 0; i < inputs.length; i++) {
+            let input = inputs[i];
             input.className = "validated";
         }
     }
-
-}
-
-
+})(eisdealer || (eisdealer = {}));
+//# sourceMappingURL=main.js.map

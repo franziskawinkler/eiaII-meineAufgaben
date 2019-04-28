@@ -1,16 +1,93 @@
+<!--
+Aufgabe: <5, Assoziative Arrays: Eisdealer>
+Name: <Franziska Winkler>
+Matrikel: <260944>
+Datum: <21.04.2019>
+	
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+-->
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<script src="data.js"></script>
-	<script src="main.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
 
-	<title>Eisdealer</title>
+    <title>Eisdealer</title>
 </head>
+
 <body>
-	
+    <header>
+        <h1>Dein persönlicher Eisdealer</h1>
+        <p>Herzlich Willkommen!</p>
+        <img src="img/eiswaffel.png">
+    </header>
+    <div id="fieldset">
+
+    </div>
+    <fieldset id="lieferoptionen">
+        <legend>Lieferoptionen</legend>
+        <p>Name, Vorname</p>
+        <input type="text" name="name" placeholder="Name, Vorname" required />
+        <hr />
+        <p>Adresse</p>
+        <input type="text" name="adresse" placeholder="Adresse" required />
+        <hr />
+        <p>Hausnummer</p>
+        <input type="text" name="hausnummer" pattern="[0-9]{1-3}" placeholder="Hausnummer" required />
+        <hr />
+        <p>Postleitzahl</p>
+        <input type="text" name="plz" pattern="[0-9]{5}" placeholder="Postleitzahl" required />
+        <hr />
+        <p>Ort</p>
+        <input type="text" name="adresse" placeholder="Ort" required />
+        <hr />
+        <p>Geburtsdatum</p>
+        <input type="text" name="tag" pattern="[0-9]{2}" placeholder="Tag" required />
+        <hr />
+        <input type="text" name="monat" pattern="[0-9]{2}" placeholder="Monat" required />
+        <hr />
+        <input type="text" name="jahr" pattern="[0-9]{4}" placeholder="Jahr" required />
+        <hr />
+        <p>E-Mail</p>
+        <input type="email" name="mail" placeholder="max@mustermann.com" required />
+        <hr />
+        <p>Telefonnummer</p>
+        <input type="text" name="telefonnummer" pattern="[0-9]{12}" placeholder="01576 3522937" />
+        <hr />
+        <p>Wohin liefern?</p>
+        <select name="lieferung" id="lieferung">
+            <option value="option1" selected>abweichende Adresse</option>
+            <option value="option2">Rechnungsadresse</option>
+        </select>
+        <p>abweichende Lieferadresse:</p>
+        <input type="text" name="Text" placeholder="type here" />
+        <p>Bezahlungsoption</p>
+        <select name="bezahlung" id="bezahlung">
+            <option value="bar">bar</option>
+            <option value="rechnung">auf Rechnung</option>
+            <option value="paypal">PayPal</option>
+        </select>
+        <br>
+        <br>
+        <button id="button">Bestellung überprüfen</button>
+    </fieldset>
+    <fieldset id="bestellübersicht">
+        <p>aktueller Preis: <span id="preis-total">0</span> €</p>
+
+        <p>Zusammenfassung der Bestellung:</p>
+        <p id="zusammenfassung"></p>
+        <hr />
+    </fieldset>
+    </main>
+    <footer>
+
+    </footer>
+
 </body>
+
 </html>

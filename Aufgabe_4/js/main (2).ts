@@ -24,7 +24,6 @@ namespace eisdealer {
         writeHTML(data);
         let fieldsets: HTMLCollectionOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
         for (let i: number = 0; i < fieldsets.length; i++) {
-           
             let fieldset: HTMLFieldSetElement = fieldsets[i];
             fieldset.addEventListener("input", handleInput);
         }
@@ -61,6 +60,7 @@ namespace eisdealer {
             }
 
             if (eisdealerBlock == "toppings") {
+                debugger; 
                 let toppings: inhaltBlock[] = data[eisdealerBlock];
 
                 let fieldset: string =
@@ -76,30 +76,29 @@ namespace eisdealer {
                         <label for="${topping.id}">${topping.id}</label>
                         <br>
                         `;
-                    
+
+                    document.getElementById("fieldset").innerHTML = fieldsets;
 
                 }
-                fieldsets += fieldset;
             }
-            if (eisdealerBlock == "soßen") {
-                let soßen: inhaltBlock[] = data[eisdealerBlock];
+            if (eisdealerBlock == "sossen") {
+                let sosen: inhaltBlock[] = data[eisdealerBlock];
 
                 let fieldset: string =
                     `
                         <p>Soßen-Toppings:</p>
                         <p>Soßentopping gibt´s gratis dazu:</p>`;
-                for (let i: number = 0; i < soßen.length; i++) {
-                    let soße: inhaltBlock = soßen[i];
+                for (let i: number = 0; i < sosen.length; i++) {
+                    let sose: inhaltBlock = sosen[i];
                     fieldset +=
                         `                   
-                        <input type="radio" name="topping" value="${soße.id}" id="${soße.id}" data-preis="0"/>
-                        <label for="${soße.id}">${soße.id}</label>
+                        <input type="radio" name="topping" value="${sose.id}" id="${sose.id}" data-preis="0"/>
+                        <label for="${sose.id}">${sose.id}</label>
                         <br>
                         `;
-                    
+                    document.getElementById("fieldset").innerHTML = fieldsets;
 
                 }
-                fieldsets += fieldset;
             }
             if (eisdealerBlock == "wOb") {
                 let wOb: inhaltBlock[] = data[eisdealerBlock];
@@ -114,13 +113,10 @@ namespace eisdealer {
                         <input type="radio" name="wOb" value="${behälter.id}" id="${behälter.id}" data-preis="0"/>
                         <label for="${behälter.id}">${behälter.id}</label>
                         <br>`;
-                   
-
+                    document.getElementById("fieldset").innerHTML = fieldsets;
 
                 }
-                fieldsets += fieldset;
             }
-            document.getElementById("fieldset").innerHTML = fieldsets;
         }
 
     }
@@ -129,7 +125,6 @@ namespace eisdealer {
         gesamtPreis = 0;
         zusammenFassung = "";
         for (let i: number = 0; i < inputs.length; i++) {
-           
             anzahl = 0;
             let input: HTMLInputElement = inputs[i];
             let preis: number = +input.getAttribute("data-preis");
