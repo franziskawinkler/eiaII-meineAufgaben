@@ -44,7 +44,7 @@ var eisdealer;
                     let eissorte = eissorten[i];
                     fieldset +=
                         `                   
-                <label for="schwarzeVanille">${eissorte.id}</label>
+                <label for="${eissorte.id}">${eissorte.id}</label>
                 <input type="number" name="anzahlKugeln" id="${eissorte.id}" step="1" min="0" max="10" value="0" data-preis="1"/>
                 <br>`;
                 }
