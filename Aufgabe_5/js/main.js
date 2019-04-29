@@ -45,7 +45,7 @@ var eisdealer;
                     fieldset +=
                         `                   
                 <label for="schwarzeVanille">${eissorte.id}</label>
-                <input type="number" name="anzahlKugeln" value="0" id="${eissorte.id}" step="1" min="0" max="10" value="0" data-preis="1"/>
+                <input type="number" name="anzahlKugeln" id="${eissorte.id}" step="1" min="0" max="10" value="0" data-preis="1"/>
                 <br>`;
                 }
                 fieldsets += fieldset;
@@ -103,29 +103,29 @@ var eisdealer;
     }
     //alte Funktionen 
     function handleInput(_event) {
-        debugger;
         gesamtPreis = 0;
         zusammenFassung = "";
         for (let i = 0; i < inputs.length; i++) {
             anzahl = 0;
             let input = inputs[i];
             let preis = +input.getAttribute("data-preis");
-            if (preis) {
-                if (input.type == "checkbox") {
-                    if (input.checked) {
-                        anzahl = 1;
-                    }
+            //änderung: gecheckt oder eissorten
+            if (input.checked == true || input.type == "number") {
+                if (input.type == "checkbox" || input.type == "radio") {
+                    anzahl = 1;
                 }
                 else {
-                    anzahl = +input.value;
+                    //anzahl der eissorte als Nummer 
+                    anzahl = Number(input.value);
                 }
                 gesamtPreis = gesamtPreis + preis * anzahl;
-                if (anzahl > 0) {
-                    zusammenFassung = zusammenFassung + anzahl + " " + input.labels[0].innerText + "\r\n";
-                    console.log(input.labels[0].innerText);
+                //wenn anzahl nicht gleich null, dann die Zusammenfassung schreiben
+                if (anzahl != 0) {
+                    zusammenFassung = zusammenFassung + anzahl + " " + input.id + "\r\n";
                 }
             }
         }
+        //zusammenfassung in html darstellen
         zusammenfassungElement.innerText = zusammenFassung;
         preisElement.innerText = String(gesamtPreis.toFixed(2));
     }

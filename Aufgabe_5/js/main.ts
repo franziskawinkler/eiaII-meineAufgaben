@@ -24,7 +24,7 @@ namespace eisdealer {
         writeHTML(data);
         let fieldsets: HTMLCollectionOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
         for (let i: number = 0; i < fieldsets.length; i++) {
-           
+
             let fieldset: HTMLFieldSetElement = fieldsets[i];
             fieldset.addEventListener("input", handleInput);
         }
@@ -53,7 +53,7 @@ namespace eisdealer {
                     fieldset +=
                         `                   
                 <label for="schwarzeVanille">${eissorte.id}</label>
-                <input type="number" name="anzahlKugeln" value="0" id="${eissorte.id}" step="1" min="0" max="10" value="0" data-preis="1"/>
+                <input type="number" name="anzahlKugeln" id="${eissorte.id}" step="1" min="0" max="10" value="0" data-preis="1"/>
                 <br>`;
                 }
 
@@ -76,7 +76,7 @@ namespace eisdealer {
                         <label for="${topping.id}">${topping.id}</label>
                         <br>
                         `;
-                    
+
 
                 }
                 fieldsets += fieldset;
@@ -96,7 +96,7 @@ namespace eisdealer {
                         <label for="${soße.id}">${soße.id}</label>
                         <br>
                         `;
-                    
+
 
                 }
                 fieldsets += fieldset;
@@ -114,7 +114,7 @@ namespace eisdealer {
                         <input type="radio" name="wOb" value="${behälter.id}" id="${behälter.id}" data-preis="0"/>
                         <label for="${behälter.id}">${behälter.id}</label>
                         <br>`;
-                   
+
 
 
                 }
@@ -126,29 +126,29 @@ namespace eisdealer {
     }
     //alte Funktionen 
     function handleInput(_event: Event): void {
-        debugger;
+      
         gesamtPreis = 0;
         zusammenFassung = "";
         for (let i: number = 0; i < inputs.length; i++) {
-           
             anzahl = 0;
             let input: HTMLInputElement = inputs[i];
             let preis: number = +input.getAttribute("data-preis");
-            if (preis) {
-                if (input.type == "checkbox") {
-                    if (input.checked) {
-                        anzahl = 1;
-                    }
+            //änderung: gecheckt oder eissorten
+            if (input.checked == true || input.type == "number") {
+                if (input.type == "checkbox" || input.type == "radio") {
+                    anzahl = 1;
                 } else {
-                    anzahl = +input.value;
+                    //anzahl der eissorte als Nummer 
+                    anzahl = Number(input.value);
                 }
                 gesamtPreis = gesamtPreis + preis * anzahl;
-                if (anzahl > 0) {
-                    zusammenFassung = zusammenFassung + anzahl + " " + input.labels[0].innerText + "\r\n";
-                    console.log(input.labels[0].innerText);
+                //wenn anzahl nicht gleich null, dann die Zusammenfassung schreiben
+                if (anzahl != 0) {
+                    zusammenFassung = zusammenFassung + anzahl + " " + input.id + "\r\n";
                 }
             }
         }
+        //zusammenfassung in html darstellen
         zusammenfassungElement.innerText = zusammenFassung;
         preisElement.innerText = String(gesamtPreis.toFixed(2));
     }
@@ -161,5 +161,3 @@ namespace eisdealer {
     }
 
 }
-
-
