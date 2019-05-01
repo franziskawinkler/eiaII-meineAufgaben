@@ -28,8 +28,8 @@ var eisdealer;
         ],
         "soßen": [
             { type: "radio", name: "soße", preis: 1, id: "Himbeersoße" },
-            { type: "radio", name: "soße", preis: 1, id: "Schokolade-weiß" },
-            { type: "radio", name: "soße", preis: 1, id: "Schokolade" }
+            { type: "radio", name: "soße", preis: 1, id: "Schokoladensoßen-weiß" },
+            { type: "radio", name: "soße", preis: 1, id: "Schokoladensoße" }
         ],
         "wOb": [
             { type: "radio", name: "waffelOderBecher", preis: 0, id: "Waffel" },
