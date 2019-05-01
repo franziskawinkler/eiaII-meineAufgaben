@@ -56,13 +56,11 @@ namespace eisdealer {
                 <input type="${eissorte.type}" name="anzahlKugeln" id="${eissorte.id}" step="1" min="0" max="10" value="0" data-preis="1"/>
                 <br>`;
                 }
-                angebot += `</fieldset> `;
                 angebot += fieldset;
             }
-
+            angebot += `</fieldset> `;
             if (eisdealerBlock == "toppings") {
                 let toppings: inhaltBlock[] = data[eisdealerBlock];
-
                 let fieldset: string =
                     `
                 <fieldset id="toppings">
@@ -79,9 +77,9 @@ namespace eisdealer {
                 }
                 angebot += fieldset;
             }
+            angebot += `</fieldset> `;
             if (eisdealerBlock == "soßen") {
                 let soßen: inhaltBlock[] = data[eisdealerBlock];
-
                 let fieldset: string =
                     `
                         <p>Soßen-Toppings:</p>
@@ -97,6 +95,7 @@ namespace eisdealer {
                 }
                 angebot += fieldset;
             }
+           
             if (eisdealerBlock == "wOb") {
                 let wOb: inhaltBlock[] = data[eisdealerBlock];
                 let fieldset: string =
@@ -113,6 +112,7 @@ namespace eisdealer {
                 }
                 angebot += fieldset;
             }
+           
             document.getElementById("fieldset").innerHTML = angebot;
         }
 

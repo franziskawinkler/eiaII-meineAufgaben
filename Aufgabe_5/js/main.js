@@ -31,7 +31,7 @@ var eisdealer;
         zusammenfassungElement = document.getElementById("zusammenfassung");
     }
     function writeHTML(_data) {
-        let fieldsets = "";
+        let angebot = "";
         let data = _data;
         for (let eisdealerBlock in data) {
             if (eisdealerBlock == "eissorten") {
@@ -45,12 +45,12 @@ var eisdealer;
                     fieldset +=
                         `                   
                 <label for="${eissorte.id}">${eissorte.id}</label>
-                <input type="number" name="anzahlKugeln" id="${eissorte.id}" step="1" min="0" max="10" value="0" data-preis="1"/>
+                <input type="${eissorte.type}" name="anzahlKugeln" id="${eissorte.id}" step="1" min="0" max="10" value="0" data-preis="1"/>
                 <br>`;
                 }
-                //fieldsets += `</fieldset> `;
-                fieldsets += fieldset;
+                angebot += fieldset;
             }
+            angebot += `</fieldset> `;
             if (eisdealerBlock == "toppings") {
                 let toppings = data[eisdealerBlock];
                 let fieldset = `
@@ -61,13 +61,14 @@ var eisdealer;
                     let topping = toppings[i];
                     fieldset +=
                         `                   
-                        <input type="checkbox" name="topping" value="${topping.id}" id="${topping.id}" data-preis="1"/>
+                        <input type="${topping.type}" name="${topping.name}" value="${topping.id}" id="${topping.id}" data-preis="1"/>
                         <label for="${topping.id}">${topping.id}</label>
                         <br>
                         `;
                 }
-                fieldsets += fieldset;
+                angebot += fieldset;
             }
+            angebot += `</fieldset> `;
             if (eisdealerBlock == "soßen") {
                 let soßen = data[eisdealerBlock];
                 let fieldset = `
@@ -77,12 +78,12 @@ var eisdealer;
                     let soße = soßen[i];
                     fieldset +=
                         `                   
-                        <input type="radio" name="topping" value="${soße.id}" id="${soße.id}" data-preis="0"/>
+                        <input type="${soße.type}" name="${soße.name}" value="${soße.id}" id="${soße.id}" data-preis="0"/>
                         <label for="${soße.id}">${soße.id}</label>
                         <br>
                         `;
                 }
-                fieldsets += fieldset;
+                angebot += fieldset;
             }
             if (eisdealerBlock == "wOb") {
                 let wOb = data[eisdealerBlock];
@@ -97,9 +98,9 @@ var eisdealer;
                         <label for="${behälter.id}">${behälter.id}</label>
                         <br>`;
                 }
-                fieldsets += fieldset;
+                angebot += fieldset;
             }
-            document.getElementById("fieldset").innerHTML = fieldsets;
+            document.getElementById("fieldset").innerHTML = angebot;
         }
     }
     //alte Funktionen 
@@ -110,7 +111,7 @@ var eisdealer;
             anzahl = 0;
             let input = inputs[i];
             let preis = +input.getAttribute("data-preis");
-            //änderung: gecheckt oder eissorten
+            //änderung: radiobutton/checkbox/anzahl eissorten
             if (input.checked == true || input.type == "number") {
                 if (input.type == "checkbox" || input.type == "radio") {
                     anzahl = 1;
