@@ -48,7 +48,7 @@ namespace eisdealer {
         ],
         "soßen": [
             { type: "radio", name: "soße", preis: 1, id: "Himbeersoße" },
-            { type: "radio", name: "soße", preis: 1, id: "weiße Schokolade" },
+            { type: "radio", name: "soße", preis: 1, id: "Schokolade-weiß" },
             { type: "radio", name: "soße", preis: 1, id: "Schokolade" }
         ],
         "wOb": [

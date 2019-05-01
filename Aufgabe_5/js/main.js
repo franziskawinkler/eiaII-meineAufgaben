@@ -48,6 +48,7 @@ var eisdealer;
                 <input type="number" name="anzahlKugeln" id="${eissorte.id}" step="1" min="0" max="10" value="0" data-preis="1"/>
                 <br>`;
                 }
+                //fieldsets += `</fieldset> `;
                 fieldsets += fieldset;
             }
             if (eisdealerBlock == "toppings") {
