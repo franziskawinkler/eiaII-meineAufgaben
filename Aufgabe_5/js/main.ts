@@ -15,7 +15,6 @@ namespace eisdealer {
     let zusammenfassungElement: HTMLElement;
     let zusammenFassung: string = "";
 
-
     window.addEventListener("load", init);
 
     function init(_event: Event): void {
@@ -27,6 +26,7 @@ namespace eisdealer {
 
             let fieldset: HTMLFieldSetElement = fieldsets[i];
             fieldset.addEventListener("input", handleInput);
+           
         }
         let button: HTMLElement = document.getElementById("button");
         button.addEventListener("click", validateForm);
@@ -37,7 +37,7 @@ namespace eisdealer {
     }
     function writeHTML(_data: eisdealerBlock): void {
 
-        let fieldsets: string = "";
+        let angebot: string = "";
         let data: { [eisdealerBlock: string]: inhaltBlock[] } = _data;
         for (let eisdealerBlock in data) {
             if (eisdealerBlock == "eissorten") {
@@ -53,11 +53,11 @@ namespace eisdealer {
                     fieldset +=
                         `                   
                 <label for="${eissorte.id}">${eissorte.id}</label>
-                <input type="number" name="anzahlKugeln" id="${eissorte.id}" step="1" min="0" max="10" value="0" data-preis="1"/>
+                <input type="${eissorte.type}" name="anzahlKugeln" id="${eissorte.id}" step="1" min="0" max="10" value="0" data-preis="1"/>
                 <br>`;
                 }
-                fieldsets += `</fieldset> `;
-                fieldsets += fieldset;
+                angebot += `</fieldset> `;
+                angebot += fieldset;
             }
 
             if (eisdealerBlock == "toppings") {
@@ -72,14 +72,12 @@ namespace eisdealer {
                     let topping: inhaltBlock = toppings[i];
                     fieldset +=
                         `                   
-                        <input type="checkbox" name="topping" value="${topping.id}" id="${topping.id}" data-preis="1"/>
+                        <input type="${topping.type}" name="${topping.name}" value="${topping.id}" id="${topping.id}" data-preis="1"/>
                         <label for="${topping.id}">${topping.id}</label>
                         <br>
                         `;
-
-
                 }
-                fieldsets += fieldset;
+                angebot += fieldset;
             }
             if (eisdealerBlock == "soßen") {
                 let soßen: inhaltBlock[] = data[eisdealerBlock];
@@ -92,14 +90,12 @@ namespace eisdealer {
                     let soße: inhaltBlock = soßen[i];
                     fieldset +=
                         `                   
-                        <input type="radio" name="topping" value="${soße.id}" id="${soße.id}" data-preis="0"/>
+                        <input type="${soße.type}" name="${soße.name}" value="${soße.id}" id="${soße.id}" data-preis="0"/>
                         <label for="${soße.id}">${soße.id}</label>
                         <br>
                         `;
-
-
                 }
-                fieldsets += fieldset;
+                angebot += fieldset;
             }
             if (eisdealerBlock == "wOb") {
                 let wOb: inhaltBlock[] = data[eisdealerBlock];
@@ -114,26 +110,22 @@ namespace eisdealer {
                         <input type="radio" name="wOb" value="${behälter.id}" id="${behälter.id}" data-preis="0"/>
                         <label for="${behälter.id}">${behälter.id}</label>
                         <br>`;
-
-
-
                 }
-                fieldsets += fieldset;
+                angebot += fieldset;
             }
-            document.getElementById("fieldset").innerHTML = fieldsets;
+            document.getElementById("fieldset").innerHTML = angebot;
         }
 
     }
     //alte Funktionen 
     function handleInput(_event: Event): void {
-      
         gesamtPreis = 0;
         zusammenFassung = "";
         for (let i: number = 0; i < inputs.length; i++) {
             anzahl = 0;
             let input: HTMLInputElement = inputs[i];
             let preis: number = +input.getAttribute("data-preis");
-            //änderung: gecheckt oder eissorten
+            //änderung: radiobutton/checkbox/anzahl eissorten
             if (input.checked == true || input.type == "number") {
                 if (input.type == "checkbox" || input.type == "radio") {
                     anzahl = 1;
