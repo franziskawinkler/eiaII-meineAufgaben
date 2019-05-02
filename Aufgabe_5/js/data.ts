@@ -30,17 +30,17 @@ namespace eisdealer {
     export let data: eisdealerBlock
         = {
         "eissorten": [
-            { type: "checkbox", name: "eissorte", preis: 1, id: "Schwarze Vanille" },
-            { type: "checkbox", name: "eissorte", preis: 1, id: "Sesam Dattel" },
-            { type: "checkbox", name: "eissorte", preis: 1, id: "Waldmeister" },
-            { type: "checkbox", name: "eissorte", preis: 1, id: "Orange-Zartbitter" },
-            { type: "checkbox", name: "eissorte", preis: 1, id: "Minze-Schoko" },
-            { type: "checkbox", name: "eissorte", preis: 1, id: "Latte Macchiato" },
-            { type: "checkbox", name: "eissorte", preis: 1, id: "Granatapfel" },
-            { type: "checkbox", name: "eissorte", preis: 1, id: "Erdbeer" },
-            { type: "checkbox", name: "eissorte", preis: 1, id: "Schokolade" },
-            { type: "checkbox", name: "eissorte", preis: 1, id: "Vanille" },
-            { type: "checkbox", name: "eissorte", preis: 1, id: "Straciatella" }
+            { type: "number", name: "eissorte", preis: 1, id: "Schwarze Vanille" },
+            { type: "number", name: "eissorte", preis: 1, id: "Sesam Dattel" },
+            { type: "number", name: "eissorte", preis: 1, id: "Waldmeister" },
+            { type: "number", name: "eissorte", preis: 1, id: "Orange-Zartbitter" },
+            { type: "number", name: "eissorte", preis: 1, id: "Minze-Schoko" },
+            { type: "number", name: "eissorte", preis: 1, id: "Latte Macchiato" },
+            { type: "number", name: "eissorte", preis: 1, id: "Granatapfel" },
+            { type: "number", name: "eissorte", preis: 1, id: "Erdbeer" },
+            { type: "number", name: "eissorte", preis: 1, id: "Schokolade" },
+            { type: "number", name: "eissorte", preis: 1, id: "Vanille" },
+            { type: "number", name: "eissorte", preis: 1, id: "Straciatella" }
         ],
         "toppings": [
             { type: "checkbox", name: "topping", preis: 1.5, id: "Sahne" },
