@@ -27,7 +27,7 @@ namespace L05_Server { //namespace L05_Server wird geöffnet
 		_response.setHeader("Access-Control-Allow-Origin", "*"); //der header wir in response geschrieben, auch wenn er schon vorhanden ist (name, wert/value) - Quelle nodejs.org
 
 		_response.write(_request.url); //die URL wird in response und durch request geschrieben
-
+		console.log(_request.url); //eingegebenen Text auf terminal ausgeben
 		_response.end(); //schließt response ab und signalisert dem server, vollständig zu sein
 	} //die Funktion wird geschlossen
 } //namespace wird geschlossen
