@@ -48,9 +48,9 @@ namespace Eisdealer {
             { type: "checkbox", name: "topping", preis: 1.5, id: "Streusel", value: 0 }
         ],
         "saucen": [
-            { type: "radio", name: "sauce", preis: 1, id: "Himbeer", value: 0 },
-            { type: "radio", name: "sauce", preis: 1, id: "Schokolade-weiss", value: 0 },
-            { type: "radio", name: "sauce", preis: 1, id: "Schokolade", value: 0 }
+            { type: "radio", name: "sauce", preis: 1, id: "Himbeersauce", value: 0 },
+            { type: "radio", name: "sauce", preis: 1, id: "Schokolade-weiss-sauce", value: 0 },
+            { type: "radio", name: "sauce", preis: 1, id: "Schokoladensauce", value: 0 }
         ],
         "wOb": [
             { type: "radio", name: "waffelOderBecher", preis: 0, id: "Waffel", value: 0 },

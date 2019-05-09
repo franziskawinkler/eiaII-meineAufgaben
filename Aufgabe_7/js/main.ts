@@ -13,12 +13,12 @@ namespace Eisdealer {
     let inputs: HTMLCollectionOf<HTMLInputElement>;
     let preisElement: HTMLSpanElement;
     let zusammenfassungElement: HTMLElement;
-    let zusammenFassung: string  = "";
+    let zusammenFassung: string = "";
 
 
     window.addEventListener("load", init);
-    
-    
+
+
     function init(_event: Event): void {
         console.log(data);
         console.log("init3");
@@ -147,7 +147,7 @@ namespace Eisdealer {
         zusammenfassungElement.innerText = zusammenFassung;
         preisElement.innerText = String(gesamtPreis.toFixed(2));
         console.log(zusammenFassung);
-        
+
     }
 
     function validateForm(): void {
@@ -163,17 +163,20 @@ namespace Eisdealer {
             let input: HTMLInputElement = inputs[i];
             let value: number = +input.getAttribute("value");
             //wenn der typ der input elemente number ist (=eissorten) und die anzahl größer null ist dann soll dies in die URL hinzugefügt werden
-            if (input.type == "number" && value > 0) {
-                url += `${input.type}:${input.value}`;
+            if (input.type == "number" && input.value > "0") {
+                url += `${input.id}:${input.value}Kugeln&`;
             }
             //für radiobutton oder chedckbox
             if (input.checked == true) {
-                if (input.type == "checkbox" || input.type == "radio"){
-                    url += ` ${input.id}`;
+                if (input.type == "checkbox" || input.type == "radio") {
+                    url += `${input.id}&`;
                 }
             }
+            
             console.log(url);
         }
+        url += preisElement.innerText = String(gesamtPreis.toFixed(2));
+        url += `Euro`;
         sendRequestWithCustomData(url);
     }
     function sendRequestWithCustomData(url: string): void {
@@ -185,8 +188,6 @@ namespace Eisdealer {
     function handleStateChange(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
-            console.log("response: " + xhr.response);
             document.getElementById("submitÜbersicht").innerHTML = xhr.response;
         }
 
