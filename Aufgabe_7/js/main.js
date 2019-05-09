@@ -1,8 +1,8 @@
 /*
-Aufgabe: <6>
+Aufgabe: <7>
 Name: <Franziska Winkler>
 Matrikel: <260944>
-Datum: <03.05.2019>
+Datum: <07.05.2019>
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
@@ -29,9 +29,7 @@ var Eisdealer;
         inputs = document.getElementsByTagName("input");
         preisElement = document.getElementById("preis-total");
         zusammenfassungElement = document.getElementById("zusammenfassung");
-        //submit-Button, eventListener
-        let submit = document.getElementById("submit");
-        submit.addEventListener("click", handleInput);
+        document.getElementById("submit").addEventListener("click", schreibeURL);
     }
     function writeHTML(_data) {
         let angebot = "";
@@ -135,11 +133,46 @@ var Eisdealer;
         //zusammenfassung in html darstellen
         zusammenfassungElement.innerText = zusammenFassung;
         preisElement.innerText = String(gesamtPreis.toFixed(2));
+        console.log(zusammenFassung);
     }
     function validateForm() {
         for (let i = 0; i < inputs.length; i++) {
             let input = inputs[i];
             input.className = "validated";
+        }
+    }
+    //neue Funktionen
+    function schreibeURL() {
+        let url = "https://eia2-winklerfranziska.herokuapp.com/?";
+        for (let i = 0; i < inputs.length; i++) {
+            let input = inputs[i];
+            let value = +input.getAttribute("value");
+            //wenn der typ der input elemente number ist (=eissorten) und die anzahl größer null ist dann soll dies in die URL hinzugefügt werden
+            if (input.type == "number" && value > 0) {
+                url += `${input.type}:${input.value}`;
+            }
+            //für radiobutton oder chedckbox
+            if (input.checked == true) {
+                if (input.type == "checkbox" || input.type == "radio") {
+                    url += ` ${input.id}`;
+                }
+            }
+            console.log(url);
+        }
+        sendRequestWithCustomData(url);
+    }
+    function sendRequestWithCustomData(url) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.addEventListener("readystatechange", handleStateChange);
+        xhr.send();
+    }
+    function handleStateChange(_event) {
+        let xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
+            console.log("response: " + xhr.response);
+            document.getElementById("submitÜbersicht").innerHTML = xhr.response;
         }
     }
 })(Eisdealer || (Eisdealer = {}));

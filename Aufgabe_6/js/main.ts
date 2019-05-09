@@ -71,7 +71,7 @@ namespace Eisdealer {
                     let topping: INHALTBLOCK = toppings[i];
                     fieldset +=
                         `                   
-                        <input type="${topping.type}" name="${topping.name}" value="${topping.id}" id="${topping.id}" data-preis="${topping.preis}"/>
+                        <input type="${topping.type}" name="${topping.id}" value="ja" id="${topping.id}" data-preis="${topping.preis}"/>
                         <label for="${topping.id}">${topping.id}</label>
                         <br>
                         `;
