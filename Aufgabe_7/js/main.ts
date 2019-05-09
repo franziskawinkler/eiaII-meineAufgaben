@@ -161,7 +161,6 @@ namespace Eisdealer {
         let url: string = "https://eia2-winklerfranziska.herokuapp.com/?";
         for (let i: number = 0; i < inputs.length; i++) {
             let input: HTMLInputElement = inputs[i];
-            let value: number = +input.getAttribute("value");
             //wenn der typ der input elemente number ist (=eissorten) und die anzahl größer null ist dann soll dies in die URL hinzugefügt werden
             if (input.type == "number" && input.value > "0") {
                 url += `${input.id}:${input.value}Kugeln&`;

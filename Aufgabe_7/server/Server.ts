@@ -26,10 +26,10 @@ namespace L05_Server { //namespace L05_Server wird geöffnet
 		_response.setHeader("content-type", "text/html; charset=utf-8"); //der header wir in response geschrieben, auch wenn er schon vorhanden ist (name, wert/value) - Quelle nodejs.org
 		_response.setHeader("Access-Control-Allow-Origin", "*"); //der header wir in response geschrieben, auch wenn er schon vorhanden ist (name, wert/value) - Quelle nodejs.org
 		//SubmitÜbersicht stylen durch URL.parse
-		_response.write("<h1>folgende Bestellung ist auf dem Server eingegangen:</h1>");
+		_response.write("<h4>folgende Bestellung ist auf dem Server eingegangen:</h4>");
 		let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
 		for (let key in url.query)
-			_response.write("<p>" + key + ": " + url.query[key] + "</p>");
+			_response.write("<p>" + key + url.query[key] + "</p>");
 		//die URL wird in response und durch request geschrieben
 		console.log(_request.url); //eingegebenen Text auf terminal ausgeben
 		_response.end(); //schließt response ab und signalisert dem server, vollständig zu sein
