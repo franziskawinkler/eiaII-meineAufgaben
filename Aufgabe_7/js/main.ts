@@ -172,11 +172,10 @@ namespace Eisdealer {
                     url += `${input.id}&`;
                 }
             }
-            
-            console.log(url);
         }
         url += preisElement.innerText = String(gesamtPreis.toFixed(2));
         url += `Euro`;
+        console.log(url);
         sendRequestWithCustomData(url);
     }
     function sendRequestWithCustomData(url: string): void {
