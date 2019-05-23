@@ -47,9 +47,9 @@ var DBClient;
         }
     }
     function search(_event) {
-        let inputs = document.getElementById("textSearch");
+        let inputs = document.getElementsByTagName("input");
         let query = "command=search";
-        query += "&Matrikelnummer=" + inputs.value;
+        query += "&Matrikelnummer=" + inputs[3].value;
         console.log(query);
         sendRequest(query, handleFindResponse);
     }

@@ -61,7 +61,7 @@ export function findAll(_callback: Function): void {
     }
 }
 export function searchMatrikel(_matnumber: MatrikelData, _callback: Function): void {
-    var cursor: Mongo.Cursor = students.find();
+    var cursor: Mongo.Cursor = students.find(_matnumber);
     cursor.toArray(prepareAnswer);
     function prepareAnswer(_e: Mongo.MongoError, studentArray: StudentData[]): void {
         if (_e)
