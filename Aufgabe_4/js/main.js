@@ -11,7 +11,6 @@ anzupassen und den Code richtig fertig geschrieben zu bekommen. Dies werde ich d
 Ich bitte um Entschuldigung! F.Winkler */
 var eisdealer;
 (function (eisdealer) {
-    let preis = 0;
     let anzahl = 0;
     let gesamtPreis = 0;
     let inputs;
@@ -28,7 +27,7 @@ var eisdealer;
         }
         let button = document.getElementById("button");
         button.addEventListener("click", validateForm);
-        inputs = document.getElementsByTagName('input');
+        inputs = document.getElementsByTagName("input");
         preisElement = document.getElementById("preis-total");
         zusammenfassungElement = document.getElementById("zusammenfassung");
     }
