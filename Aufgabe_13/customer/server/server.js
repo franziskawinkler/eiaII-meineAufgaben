@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Http = require("http"); //Erstellen eines http-Obejektes im Code, damit der Interpreter nach jedmöglichem Import zu dem http-Objekt suchen kann, um es schließlich nacheinander dem http-Objekt in dem Code hinzuzufügen -Quelle stackOverflow
 const Url = require("url");
-var L05_Server;
-(function (L05_Server) {
+var Server;
+(function (Server) {
     console.log("Starting server"); //auf der Konsole wird "Starting server" ausgegeben
     let port = Number(process.env.PORT); // die Variable port des typ number speichert einen string (process.env.PORT), der zur number umgewandelt wird; der string weist den server darauf hin, auf welchen listening port er hören soll - Quelle stackoverflow
     if (!port) //wenn die vorher deklarierte Variable port nicht zutrifft, dann soll der folgende port verwendet werden 
@@ -20,7 +20,7 @@ var L05_Server;
         _response.setHeader("content-type", "text/html; charset=utf-8"); //der header wir in response geschrieben, auch wenn er schon vorhanden ist (name, wert/value) - Quelle nodejs.org
         _response.setHeader("Access-Control-Allow-Origin", "*"); //der header wir in response geschrieben, auch wenn er schon vorhanden ist (name, wert/value) - Quelle nodejs.org
         //SubmitÜbersicht stylen durch URL.parse
-        _response.write("<h4>folgende Bestellung ist auf dem Server eingegangen:</h4>");
+        _response.write("folgende Bestellung ist auf dem Server eingegangen:");
         let url = Url.parse(_request.url, true);
         for (let key in url.query)
             _response.write("<p>" + key + url.query[key] + "</p>");
@@ -28,5 +28,5 @@ var L05_Server;
         console.log(_request.url); //eingegebenen Text auf terminal ausgeben
         _response.end(); //schließt response ab und signalisert dem server, vollständig zu sein
     } //die Funktion wird geschlossen
-})(L05_Server || (L05_Server = {})); //namespace wird geschlossen
+})(Server || (Server = {})); //namespace wird geschlossen
 //# sourceMappingURL=server.js.map

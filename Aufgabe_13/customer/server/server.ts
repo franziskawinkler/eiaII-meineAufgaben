@@ -1,6 +1,6 @@
 import * as Http from "http"; //Erstellen eines http-Obejektes im Code, damit der Interpreter nach jedmöglichem Import zu dem http-Objekt suchen kann, um es schließlich nacheinander dem http-Objekt in dem Code hinzuzufügen -Quelle stackOverflow
 import * as Url from "url";
-namespace L05_Server { //namespace L05_Server wird geöffnet
+namespace Server { //namespace L05_Server wird geöffnet
 	console.log("Starting server"); //auf der Konsole wird "Starting server" ausgegeben
 	let port: number = Number(process.env.PORT); // die Variable port des typ number speichert einen string (process.env.PORT), der zur number umgewandelt wird; der string weist den server darauf hin, auf welchen listening port er hören soll - Quelle stackoverflow
 	if (!port) //wenn die vorher deklarierte Variable port nicht zutrifft, dann soll der folgende port verwendet werden 
@@ -21,7 +21,7 @@ namespace L05_Server { //namespace L05_Server wird geöffnet
 		_response.setHeader("content-type", "text/html; charset=utf-8"); //der header wir in response geschrieben, auch wenn er schon vorhanden ist (name, wert/value) - Quelle nodejs.org
 		_response.setHeader("Access-Control-Allow-Origin", "*"); //der header wir in response geschrieben, auch wenn er schon vorhanden ist (name, wert/value) - Quelle nodejs.org
 		//SubmitÜbersicht stylen durch URL.parse
-		_response.write("<h4>folgende Bestellung ist auf dem Server eingegangen:</h4>");
+		_response.write("folgende Bestellung ist auf dem Server eingegangen:");
 		let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
 		for (let key in url.query)
 			_response.write("<p>" + key + url.query[key] + "</p>");
