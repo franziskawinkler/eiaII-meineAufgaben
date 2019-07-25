@@ -8,7 +8,7 @@ import * as Mongo from "mongodb";
 console.log("Database starting");
 
 let databaseURL: string = "mongodb://localhost:27017";
-let databaseName: string = "Test";
+let databaseName: string = "eisdealer";
 let db: Mongo.Db;
 let cone: Mongo.Collection;
 let dip: Mongo.Collection;
@@ -59,7 +59,7 @@ export function findAll(_callback: Function): void {
 
     // toArray-handler receives two standard parameters, an error object and the array
     // implemented as inner function, so _callback is in scope
-    function prepareAnswer(_e: Mongo.MongoError, auswahlArray: AUSWAHL[]): void {
+    function prepareAnswer(_e: Mongo.MongoError, auswahlArray: EISDEALER[]): void {
         if (_e)
             _callback("Error" + _e);
         else

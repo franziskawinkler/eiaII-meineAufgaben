@@ -1,3 +1,4 @@
+//customer
 import * as Http from "http"; //Erstellen eines http-Obejektes im Code, damit der Interpreter nach jedmöglichem Import zu dem http-Objekt suchen kann, um es schließlich nacheinander dem http-Objekt in dem Code hinzuzufügen -Quelle stackOverflow
 import * as Url from "url";
 namespace Server { //namespace L05_Server wird geöffnet
