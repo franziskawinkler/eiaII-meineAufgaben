@@ -1,21 +1,12 @@
 namespace Eisdealer {
-    // Heterogenes assoziatives Array mit vordefinierten Schlüsseln
     export interface  AUSWAHL {
-        //für radiobutton, checkbox usw.
         type: string;
-        //zu welcher Box gehört es? esoorten, toppings usw.
         name: string;
-        //wie viel kostet es?
         preis: number;
-        //welches Produkt?
         id: string;
         value: number;
 
     }
-
-    // Homogenes assoziatives Array mit variablen Schlüsseln, 
-    // ein String wird abgebildet auf ein Array mit Objekten von obigen Typ 
-
     export interface EISDEALER {
         [key: string]: AUSWAHL[];
     }
