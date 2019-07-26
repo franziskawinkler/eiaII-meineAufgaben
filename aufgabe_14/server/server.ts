@@ -9,7 +9,7 @@ namespace Server {
 
 	let server: Http.Server = Http.createServer();
 	server.addListener("request", handleRequest);
-	//server.addListener("request", handleAdminRequest);
+	server.addListener("refresh", handleAdminRequest);
 	server.addListener("listening", handleListen);
 	server.listen(port);
 

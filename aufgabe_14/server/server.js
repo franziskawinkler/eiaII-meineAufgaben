@@ -11,7 +11,7 @@ var Server;
         port = 8100;
     let server = Http.createServer();
     server.addListener("request", handleRequest);
-    //server.addListener("request", handleAdminRequest);
+    server.addListener("refresh", handleAdminRequest);
     server.addListener("listening", handleListen);
     server.listen(port);
     function handleListen() {
