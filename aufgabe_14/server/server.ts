@@ -13,24 +13,24 @@ namespace Server {
 	server.addListener("listening", handleListen); 
 	server.listen(port); 
 
-	function handleListen(): void { //die Funktion handleListen, startet. Die Funktion empfängt und übergibt keine Werte.
-		console.log("Listening on port:" + port); //auf der Konsole wird "listening" ausgegeben
-	}//die Funktion wird geschlossen
+	function handleListen(): void { 
+		console.log("Listening on port:" + port); 
+	}
 
-	function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void { //die Funktion handleRequest wird gestartet. Sie empfängt zwei Werte (_request: Übergabe der Anfrage, _response: warten auf Antwort) und hat keinen Rückgabewert.
-		console.log("I hear voices!"); //auf der Konsole wird "I hear voices!" ausgegeben
+	function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+		console.log("I hear voices!"); 
 
-		_response.setHeader("content-type", "text/html; charset=utf-8"); //der header wir in response geschrieben, auch wenn er schon vorhanden ist (name, wert/value) - Quelle nodejs.org
-		_response.setHeader("Access-Control-Allow-Origin", "*"); //der header wir in response geschrieben, auch wenn er schon vorhanden ist (name, wert/value) - Quelle nodejs.org
-		//SubmitÜbersicht stylen durch URL.parse
+		_response.setHeader("content-type", "text/html; charset=utf-8"); 
+		_response.setHeader("Access-Control-Allow-Origin", "*"); 
+	
 		_response.write("folgende Bestellung ist auf dem Server eingegangen:");
 		let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
 		for (let key in url.query)
 			_response.write("<p>" + key + url.query[key] + "</p>");
-		//die URL wird in response und durch request geschrieben
-		console.log(_request.url); //eingegebenen Text auf terminal ausgeben
-		_response.end(); //schließt response ab und signalisert dem server, vollständig zu sein
-	} //die Funktion wird geschlossen
+		
+		console.log(_request.url);
+		_response.end();
+	}
 
 	function handleAdminRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
 		console.log("Request received");

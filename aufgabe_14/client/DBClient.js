@@ -1,8 +1,8 @@
 var DBClient;
 (function (DBClient) {
     window.addEventListener("load", init);
-    //let serverAddress: string = "https://eia2-winklerfranziska.herokuapp.com";
-    let serverAddress = "https://eia2-testserver.herokuapp.com/";
+    let serverAddress = "https://eia2-winklerfranziska.herokuapp.com";
+    //let serverAddress: string = "https://eia2-testserver.herokuapp.com/";
     function init(_event) {
         console.log("Init");
         let insertButton = document.getElementById("insert");

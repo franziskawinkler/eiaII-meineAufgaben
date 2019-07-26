@@ -15,21 +15,19 @@ var Server;
     server.addListener("listening", handleListen);
     server.listen(port);
     function handleListen() {
-        console.log("Listening on port:" + port); //auf der Konsole wird "listening" ausgegeben
-    } //die Funktion wird geschlossen
+        console.log("Listening on port:" + port);
+    }
     function handleRequest(_request, _response) {
-        console.log("I hear voices!"); //auf der Konsole wird "I hear voices!" ausgegeben
-        _response.setHeader("content-type", "text/html; charset=utf-8"); //der header wir in response geschrieben, auch wenn er schon vorhanden ist (name, wert/value) - Quelle nodejs.org
-        _response.setHeader("Access-Control-Allow-Origin", "*"); //der header wir in response geschrieben, auch wenn er schon vorhanden ist (name, wert/value) - Quelle nodejs.org
-        //SubmitÜbersicht stylen durch URL.parse
+        console.log("I hear voices!");
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+        _response.setHeader("Access-Control-Allow-Origin", "*");
         _response.write("folgende Bestellung ist auf dem Server eingegangen:");
         let url = Url.parse(_request.url, true);
         for (let key in url.query)
             _response.write("<p>" + key + url.query[key] + "</p>");
-        //die URL wird in response und durch request geschrieben
-        console.log(_request.url); //eingegebenen Text auf terminal ausgeben
-        _response.end(); //schließt response ab und signalisert dem server, vollständig zu sein
-    } //die Funktion wird geschlossen
+        console.log(_request.url);
+        _response.end();
+    }
     function handleAdminRequest(_request, _response) {
         console.log("Request received");
         let query = Url.parse(_request.url, true).query;
