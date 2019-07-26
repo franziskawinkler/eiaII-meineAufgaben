@@ -1,14 +1,9 @@
 "use strict";
-/**
- * Simple database insertion and query for MongoDB
- * @author: Jirka Dell'Oro-Friedl
- * @adapted: Lukas Scheuerle
- */
 Object.defineProperty(exports, "__esModule", { value: true });
 const Mongo = require("mongodb");
 console.log("Database starting");
 //https://mongodbnetbrowser.herokuapp.com/
-let databaseURL = "mongodb+srv://cluster0-ap38w.mongodb.net/test";
+let databaseURL = "mongodb://localhost:27017";
 let databaseName = "eisdealer";
 let db;
 let cone;
@@ -18,7 +13,8 @@ let toppings;
 let eintrag;
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
-    databaseURL = "mongodb+srv://cluster0-ap38w.mongodb.net/test";
+    //databaseURL = "mongodb+srv://username:password@hostname:port/database"
+    databaseURL = "mongodb+srv://franzi:franzi123@cluster0-ap38w.mongodb.net/test/eisdealer";
     databaseName = "eisdealer";
 }
 // try to connect to database, then activate callback "handleConnect" 

@@ -1,14 +1,7 @@
-/**
- * Simple database insertion and query for MongoDB
- * @author: Jirka Dell'Oro-Friedl
- * @adapted: Lukas Scheuerle
- */
-
 import * as Mongo from "mongodb";
-
 console.log("Database starting");
 //https://mongodbnetbrowser.herokuapp.com/
-let databaseURL: string = "mongodb+srv://cluster0-ap38w.mongodb.net/test";
+let databaseURL: string = "mongodb://localhost:27017";
 let databaseName: string = "eisdealer";
 let db: Mongo.Db;
 let cone: Mongo.Collection;
@@ -19,8 +12,8 @@ let eintrag: Mongo.Collection;
 
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
-
-    databaseURL = "mongodb+srv://cluster0-ap38w.mongodb.net/test";
+//databaseURL = "mongodb+srv://username:password@hostname:port/database"
+    databaseURL = "mongodb+srv://franzi:franzi123@cluster0-ap38w.mongodb.net/test/eisdealer";
     databaseName = "eisdealer";
 }
 

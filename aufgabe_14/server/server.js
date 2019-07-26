@@ -10,24 +10,25 @@ var Server;
     if (!port)
         port = 8100;
     let server = Http.createServer();
-    server.addListener("request", handleRequest);
-    server.addListener("refresh", handleAdminRequest);
     server.addListener("listening", handleListen);
+    //	server.addListener("request", handleRequest);
+    server.addListener("refresh", handleAdminRequest);
     server.listen(port);
     function handleListen() {
         console.log("Listening on port:" + port);
     }
-    function handleRequest(_request, _response) {
-        console.log("I hear voices!");
-        _response.setHeader("content-type", "text/html; charset=utf-8");
-        _response.setHeader("Access-Control-Allow-Origin", "*");
-        _response.write("folgende Bestellung ist auf dem Server eingegangen:");
-        let url = Url.parse(_request.url, true);
-        for (let key in url.query)
-            _response.write("<p>" + key + url.query[key] + "</p>");
-        console.log(_request.url);
-        _response.end();
-    }
+    //	function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+    //		console.log("I hear voices!");
+    //		_response.setHeader("content-type", "text/html; charset=utf-8");
+    //		_response.setHeader("Access-Control-Allow-Origin", "*");
+    //		_response.write("folgende Bestellung ist auf dem Server eingegangen:");
+    //		let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+    //		for (let key in url.query)
+    //			_response.write("<p>" + key + url.query[key] + "</p>");
+    //
+    //		console.log(_request.url);
+    //		_response.end();
+    //	}
     function handleAdminRequest(_request, _response) {
         console.log("Request received");
         let query = Url.parse(_request.url, true).query;
