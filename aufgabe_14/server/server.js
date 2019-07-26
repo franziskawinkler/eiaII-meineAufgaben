@@ -30,6 +30,17 @@ var Server;
     //		_response.end();
     //	}
     function handleAdminRequest(_request, _response) {
+        console.log("I hear voices!");
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+        _response.setHeader("Access-Control-Allow-Origin", "*");
+        _response.write("folgende Bestellung ist auf dem Server eingegangen:");
+        let url = Url.parse(_request.url, true);
+        for (let key in url.query)
+            _response.write("<p>" + key + url.query[key] + "</p>");
+        console.log(_request.url);
+        _response.end();
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+        _response.setHeader("Access-Control-Allow-Origin", "*");
         console.log("Request received");
         let query = Url.parse(_request.url, true).query;
         let command = query["command"];
