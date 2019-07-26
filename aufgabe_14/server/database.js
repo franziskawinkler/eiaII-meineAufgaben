@@ -8,7 +8,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Mongo = require("mongodb");
 console.log("Database starting");
 //https://mongodbnetbrowser.herokuapp.com/
-let databaseURL = "https://eia2-winklerfranziska.herokuapp.com/?";
+let databaseURL = "mongodb+srv://cluster0-ap38w.mongodb.net/test";
 let databaseName = "eisdealer";
 let db;
 let cone;
