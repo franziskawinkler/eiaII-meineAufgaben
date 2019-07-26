@@ -1,0 +1,57 @@
+/*
+Aufgabe: <7>
+Name: <Franziska Winkler>
+Matrikel: <260944>
+Datum: <07.05.2019>
+	
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+*/
+
+html{
+    background-color: #ffc0cb;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+
+}
+header,footer{
+    background-color: rgb(250, 235, 235);
+    padding: 2em;
+    color: rgb(255, 111, 135);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    
+}
+main{
+    color: rgb(221, 64, 124);
+}
+
+#eissorten label{
+    width: 130px;
+    display: inline-block
+}
+input{
+    background-color: white;
+}
+input.validated:invalid{
+background-color: #ff0000;
+}
+@media only screen and (max-width:768px){
+fieldset{
+    width:80%;
+    margin: 1.5em;
+}
+}
+@media only sreen and (min-width: 1024px){
+    body{
+        height: 100%;
+        width: 100%
+    }
+    main{
+        margin: 2em; 
+    }
+    fieldset{
+        float: left;
+        width: 100%;
+    }
+}
+    
