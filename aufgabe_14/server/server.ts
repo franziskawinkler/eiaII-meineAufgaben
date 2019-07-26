@@ -10,7 +10,7 @@ namespace Server {
 	let server: Http.Server = Http.createServer();
 	server.addListener("listening", handleListen);
 //	server.addListener("request", handleRequest);
-	server.addListener("refresh", handleAdminRequest);
+	server.addListener("request", handleAdminRequest);
 	server.listen(port);
 
 	function handleListen(): void {

@@ -12,7 +12,7 @@ var Server;
     let server = Http.createServer();
     server.addListener("listening", handleListen);
     //	server.addListener("request", handleRequest);
-    server.addListener("refresh", handleAdminRequest);
+    server.addListener("request", handleAdminRequest);
     server.listen(port);
     function handleListen() {
         console.log("Listening on port:" + port);
