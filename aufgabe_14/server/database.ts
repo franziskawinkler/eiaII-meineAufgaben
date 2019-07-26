@@ -8,7 +8,7 @@ import * as Mongo from "mongodb";
 
 console.log("Database starting");
 //https://mongodbnetbrowser.herokuapp.com/
-let databaseURL: string = "mongodb://localhost:27017";
+let databaseURL: string = "https://mongodbnetbrowser.herokuapp.com/";
 let databaseName: string = "eisdealer";
 let db: Mongo.Db;
 let cone: Mongo.Collection;
