@@ -45,27 +45,30 @@ namespace Server {
 		function findCallback(json: string): void {
 			respond(_response, json);
 		}
+		function respond(_response: Http.ServerResponse, _text: string): void {
+			console.log("I hear voices!"); 
+
+			_response.setHeader("content-type", "text/html; charset=utf-8"); 
+			_response.setHeader("Access-Control-Allow-Origin", "*"); 
+			_response.write("<h4>folgende Bestellung ist auf dem Server eingegangen:</h4>");
+			let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+			for (let key in url.query)
+				_response.write("<p>" + key + url.query[key] + "</p>");
+			console.log(_request.url); 
+			_response.end(); 
+		} 
 	}
+		//	_response.setHeader("content-type", "text/html; charset=utf-8");
+		//	_response.setHeader("Access-Control-Allow-Origin", "*");
 
-
-	function respond(_response: Http.ServerResponse, _text: string): void {
-		console.log("Preparing response: " + _text);
-		_response.setHeader("Access-Control-Allow-Origin", "*");
-		_response.setHeader("content-type", "text/html; charset=utf-8");
-		_response.write(_text);
-		_response.end();
+		//	_response.write("Folgendes ist auf dem Server eingegangen:");
+		//	let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+		//	for (let key in url.query)
+		//		_response.write("<p>" + key + url.query[key] + "</p>");
+		//
+		//	console.log(_request.url);
+		//	_response.end();
 	}
-//	_response.setHeader("content-type", "text/html; charset=utf-8");
-//	_response.setHeader("Access-Control-Allow-Origin", "*");
-
-//	_response.write("Folgendes ist auf dem Server eingegangen:");
-//	let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-//	for (let key in url.query)
-//		_response.write("<p>" + key + url.query[key] + "</p>");
-//
-//	console.log(_request.url);
-//	_response.end();
-}
 
 	//	function handleAdminRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
 	//		console.log("Request received");
@@ -105,4 +108,3 @@ namespace Server {
 	//		_response.end();
 	//	}
 
-	
