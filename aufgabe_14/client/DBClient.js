@@ -25,6 +25,7 @@ var DBClient;
     DBClient.insert = insert;
     function refresh(_event) {
         let query = "command=refresh";
+        console.log("loadingData");
         sendRequest(query, handleFindResponse);
     }
     DBClient.refresh = refresh;

@@ -26,6 +26,8 @@ namespace DBClient {
 
     export function refresh(_event: Event): void {
         let query: string = "command=refresh";
+        console.log("loadingData");
+        
         sendRequest(query, handleFindResponse);
     }
 
