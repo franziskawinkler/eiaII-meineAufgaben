@@ -9,27 +9,15 @@ namespace DBClient {
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
     }
-    let preisElement: HTMLSpanElement;
-    let gesamtPreis: number = 0;
 
     export function insert(_event: Event): void {
-        let inputs: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
+        let eissorte: EISDEALER[];
+        let toppings: EISDEALER[];
+        let saucen: EISDEALER[];
         let query: string = "command=insert";
-        for (let i: number = 0; i < inputs.length; i++) {
-            let input: HTMLInputElement = inputs[i];
-            //wenn der typ der input elemente number ist (=eissorten) und die anzahl größer null ist dann soll dies in die URL hinzugefügt werden
-            if (input.type == "number" && input.value > "0") {
-                query += `${input.id}:${input.value}Kugeln&`;
-            }
-            //für radiobutton oder chedckbox
-            if (input.checked == true) {
-                if (input.type == "checkbox" || input.type == "radio") {
-                    query += `${input.id}&`;
-                }
-            }
-        }
-        query += preisElement.innerText = String(gesamtPreis.toFixed(2));
-        query += `Euro`;
+        query += "&sort=" + eissorte;
+        query += "&toppings=" + toppings;
+        query += "&sauce=" + saucen;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }

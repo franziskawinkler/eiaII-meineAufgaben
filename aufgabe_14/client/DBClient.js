@@ -9,26 +9,14 @@ var DBClient;
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
     }
-    let preisElement;
-    let gesamtPreis = 0;
     function insert(_event) {
-        let inputs = document.getElementsByTagName("input");
+        let eissorte;
+        let toppings;
+        let saucen;
         let query = "command=insert";
-        for (let i = 0; i < inputs.length; i++) {
-            let input = inputs[i];
-            //wenn der typ der input elemente number ist (=eissorten) und die anzahl größer null ist dann soll dies in die URL hinzugefügt werden
-            if (input.type == "number" && input.value > "0") {
-                query += `${input.id}:${input.value}Kugeln&`;
-            }
-            //für radiobutton oder chedckbox
-            if (input.checked == true) {
-                if (input.type == "checkbox" || input.type == "radio") {
-                    query += `${input.id}&`;
-                }
-            }
-        }
-        query += preisElement.innerText = String(gesamtPreis.toFixed(2));
-        query += `Euro`;
+        query += "&sort=" + eissorte;
+        query += "&toppings=" + toppings;
+        query += "&sauce=" + saucen;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
