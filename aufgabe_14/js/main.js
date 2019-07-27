@@ -6,9 +6,11 @@ var Eisdealer;
     let preisElement;
     let zusammenfassungElement;
     let zusammenFassung = "";
+    let serverAddress = "https://eia2-winklerfranziska.herokuapp.com";
     window.addEventListener("load", init);
     function init() {
         console.log("init");
+        refresh();
         writeHTML(Eisdealer.data);
         let fieldsets = document.getElementsByTagName("fieldset");
         for (let i = 0; i < fieldsets.length; i++) {
@@ -97,7 +99,6 @@ var Eisdealer;
             document.getElementById("fieldset").innerHTML = angebot;
         }
     }
-    //alte Funktionen 
     function handleInput(_event) {
         gesamtPreis = 0;
         zusammenFassung = "";
@@ -164,6 +165,27 @@ var Eisdealer;
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             document.getElementById("submitÜbersicht").innerHTML = xhr.response;
+        }
+    }
+    function refresh() {
+        let query = "command=refresh";
+        console.log("loadingData");
+        sendRequest(query, handleFindResponse);
+    }
+    function sendRequest(_query, _callback) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", serverAddress + "?" + _query, true);
+        xhr.addEventListener("readystatechange", _callback);
+        xhr.send();
+        console.log("request sended");
+    }
+    function handleFindResponse(_event) {
+        let xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            let output = document.getElementsByTagName("textarea")[0];
+            output.value = xhr.response;
+            let responseAsJson = JSON.parse(xhr.response);
+            console.log(responseAsJson);
         }
     }
 })(Eisdealer || (Eisdealer = {}));

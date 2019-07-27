@@ -5,13 +5,14 @@ namespace Eisdealer {
     let preisElement: HTMLSpanElement;
     let zusammenfassungElement: HTMLElement;
     let zusammenFassung: string = "";
-
+    let serverAddress: string = "https://eia2-winklerfranziska.herokuapp.com";
 
     window.addEventListener("load", init);
 
 
     function init(): void {
         console.log("init");
+        refresh();
         writeHTML(data);
         let fieldsets: HTMLCollectionOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
         for (let i: number = 0; i < fieldsets.length; i++) {
@@ -110,7 +111,6 @@ namespace Eisdealer {
         }
 
     }
-    //alte Funktionen 
     function handleInput(_event: Event): void {
         gesamtPreis = 0;
         zusammenFassung = "";
@@ -179,7 +179,27 @@ namespace Eisdealer {
         if (xhr.readyState == XMLHttpRequest.DONE) {
             document.getElementById("submitÜbersicht").innerHTML = xhr.response;
         }
-
     }
+    function refresh(): void {
+        let query: string = "command=refresh";
+        console.log("loadingData");
 
+        sendRequest(query, handleFindResponse);
+    }
+    function sendRequest(_query: string, _callback: EventListener): void {
+        let xhr: XMLHttpRequest = new XMLHttpRequest();
+        xhr.open("GET", serverAddress + "?" + _query, true);
+        xhr.addEventListener("readystatechange", _callback);
+        xhr.send();
+        console.log("request sended");
+    }
+    function handleFindResponse(_event: ProgressEvent): void {
+        let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
+            output.value = xhr.response;
+            let responseAsJson: JSON = JSON.parse(xhr.response);
+            console.log(responseAsJson);
+        }
+    }
 }
