@@ -1,14 +1,14 @@
-import * as Http from "http";
-import * as Url from "url";
-import * as Database from "./database";
-namespace Eisdealer {
+
+	import * as Http from "http";
+	import * as Url from "url";
+	import * as Database from "./database";
 	console.log("Starting server");
 	let port: number = Number(process.env.PORT);
 	if (!port)
 		port = 8100;
 
 	let server: Http.Server = Http.createServer();
-	
+
 	server.addListener("listening", handleListen);
 	server.addListener("request", handleRequest);
 	//	server.addListener("request", handleAdminRequest);
@@ -47,20 +47,20 @@ namespace Eisdealer {
 			respond(_response, json);
 		}
 		function respond(_response: Http.ServerResponse, _text: string): void {
-			console.log("I hear voices!"); 
+			console.log("I hear voices!");
 
-			_response.setHeader("content-type", "text/html; charset=utf-8"); 
-			_response.setHeader("Access-Control-Allow-Origin", "*"); 
+			_response.setHeader("content-type", "text/html; charset=utf-8");
+			_response.setHeader("Access-Control-Allow-Origin", "*");
 			_response.write("");
 			let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
 			for (let key in url.query)
 				_response.write("<p>" + key + url.query[key] + "</p>");
-			console.log(_request.url); 
-			_response.end(); 
-		} 
-		
+			console.log(_request.url);
+			_response.end();
+		}
+
 	}
-	}
+
 
 
 
