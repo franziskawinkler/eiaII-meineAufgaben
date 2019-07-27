@@ -12,7 +12,7 @@ namespace DBClient {
     let preisElement: HTMLSpanElement;
     let gesamtPreis: number = 0;
 
-    function insert(_event: Event): void {
+    export function insert(_event: Event): void {
         let inputs: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
         let query: string = "command=insert";
         for (let i: number = 0; i < inputs.length; i++) {
@@ -34,7 +34,7 @@ namespace DBClient {
         sendRequest(query, handleInsertResponse);
     }
 
-    function refresh(_event: Event): void {
+    export function refresh(_event: Event): void {
         let query: string = "command=refresh";
         sendRequest(query, handleFindResponse);
     }

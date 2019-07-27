@@ -32,10 +32,12 @@ var DBClient;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
+    DBClient.insert = insert;
     function refresh(_event) {
         let query = "command=refresh";
         sendRequest(query, handleFindResponse);
     }
+    DBClient.refresh = refresh;
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);
