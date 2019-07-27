@@ -1,3 +1,5 @@
+import { stringify } from "querystring";
+
 namespace DBClient {
     window.addEventListener("load", init);
     let serverAddress: string = "https://eia2-winklerfranziska.herokuapp.com";
@@ -11,9 +13,9 @@ namespace DBClient {
     }
 
     export function insert(_event: Event): void {
-        let eissorte: EISDEALER[];
-        let toppings: EISDEALER[];
-        let saucen: EISDEALER[];
+        let eissorte: string; 
+        let toppings: string;
+        let saucen: string;
         let query: string = "command=insert";
         query += "&sort=" + eissorte;
         query += "&toppings=" + toppings;
