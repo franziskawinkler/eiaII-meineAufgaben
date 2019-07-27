@@ -14,7 +14,7 @@ let eintrag;
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
     //databaseURL = "mongodb+srv://username:password@hostname:port/database"
-    databaseURL = "mongodb+srv://franzi:franzi123@cluster0-ap38w.mongodb.net/test/eisdealer";
+    databaseURL = "mongodb+srv://franzi:franzi123@cluster0-ap38w.mongodb.net/test?retryWrites=true";
     databaseName = "eisdealer";
 }
 // try to connect to database, then activate callback "handleConnect" 
@@ -41,14 +41,9 @@ exports.insert = insert;
 function handleInsert(_e) {
     console.log("Database insertion returned -> " + _e);
 }
-// try to fetch all documents from database, then activate callback
 function findAll(_callback) {
-    // cursor points to the retreived set of documents in memory
     var cursor = eintrag.find();
-    // try to convert to array, then activate callback "prepareAnswer"
     cursor.toArray(prepareAnswer);
-    // toArray-handler receives two standard parameters, an error object and the array
-    // implemented as inner function, so _callback is in scope
     function prepareAnswer(_e, auswahlArray) {
         if (_e)
             _callback("Error" + _e);
