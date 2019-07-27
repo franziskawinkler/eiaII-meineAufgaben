@@ -2,7 +2,6 @@ var DBClient;
 (function (DBClient) {
     window.addEventListener("load", init);
     let serverAddress = "https://eia2-winklerfranziska.herokuapp.com";
-    //let serverAddress: string = "https://eia2-testserver.herokuapp.com/";
     function init(_event) {
         console.log("Init");
         let insertButton = document.getElementById("insert");
@@ -42,6 +41,7 @@ var DBClient;
         xhr.open("GET", serverAddress + "?" + _query, true);
         xhr.addEventListener("readystatechange", _callback);
         xhr.send();
+        console.log("request sended");
     }
     function handleInsertResponse(_event) {
         let xhr = _event.target;

@@ -155,10 +155,12 @@ var Eisdealer;
         sendRequestWithCustomData(url);
     }
     function sendRequestWithCustomData(url) {
+        console.log("sendRequest");
         let xhr = new XMLHttpRequest();
         xhr.open("GET", url, true);
         xhr.addEventListener("readystatechange", handleStateChange);
         xhr.send();
+        console.log("request sended");
     }
     function handleStateChange(_event) {
         let xhr = _event.target;

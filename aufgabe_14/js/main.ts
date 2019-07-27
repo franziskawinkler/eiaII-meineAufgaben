@@ -170,10 +170,12 @@ namespace Eisdealer {
         sendRequestWithCustomData(url);
     }
     function sendRequestWithCustomData(url: string): void {
+        console.log("sendRequest");
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", url, true);
         xhr.addEventListener("readystatechange", handleStateChange);
         xhr.send();
+        console.log("request sended");
     }
     function handleStateChange(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
