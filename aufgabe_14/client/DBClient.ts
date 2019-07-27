@@ -8,6 +8,7 @@ namespace DBClient {
         console.log("Init");
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
+    
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
     }
@@ -27,7 +28,7 @@ namespace DBClient {
     export function refresh(_event: Event): void {
         let query: string = "command=refresh";
         console.log("loadingData");
-        
+
         sendRequest(query, handleFindResponse);
     }
 
