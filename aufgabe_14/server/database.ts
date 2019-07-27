@@ -1,5 +1,3 @@
-//"use strict";
-//Object.defineProperty(exports, "__esModule", { value: true });
 import * as Mongo from "mongodb";
 console.log("Database starting");
 let databaseURL: string = "mongodb://localhost:27017";
@@ -36,8 +34,14 @@ function handleConnect(_e: Mongo.MongoError, _client: Mongo.MongoClient): void {
 }
 
 export function insert(_doc: EISDEALER): void {
-    eintrag = db.collection("icecreamType"),
-    eintrag.insertOne(_doc, handleInsert);
+    cone = db.collection("cone"),
+    cone.insertOne(_doc, handleInsert);
+    dip = db.collection("dip"),
+    dip.insertOne(_doc, handleInsert);
+    icecreamType = db.collection("icecreamType"),
+    icecreamType.insertOne(_doc, handleInsert);
+    toppings = db.collection("toppings"),
+    toppings.insertOne(_doc, handleInsert);
 }
 
 // insertion-handler receives an error object as standard parameter

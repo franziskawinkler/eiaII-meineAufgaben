@@ -1,7 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//"use strict";
-//Object.defineProperty(exports, "__esModule", { value: true });
 const Mongo = require("mongodb");
 console.log("Database starting");
 let databaseURL = "mongodb://localhost:27017";
@@ -34,8 +32,14 @@ function handleConnect(_e, _client) {
     }
 }
 function insert(_doc) {
-    eintrag = db.collection("icecreamType"),
-        eintrag.insertOne(_doc, handleInsert);
+    cone = db.collection("cone"),
+        cone.insertOne(_doc, handleInsert);
+    dip = db.collection("dip"),
+        dip.insertOne(_doc, handleInsert);
+    icecreamType = db.collection("icecreamType"),
+        icecreamType.insertOne(_doc, handleInsert);
+    toppings = db.collection("toppings"),
+        toppings.insertOne(_doc, handleInsert);
 }
 exports.insert = insert;
 // insertion-handler receives an error object as standard parameter

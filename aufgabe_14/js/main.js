@@ -7,9 +7,8 @@ var Eisdealer;
     let zusammenfassungElement;
     let zusammenFassung = "";
     window.addEventListener("load", init);
-    function init(_event) {
-        console.log(Eisdealer.data);
-        console.log("init3");
+    function init() {
+        console.log("init");
         writeHTML(Eisdealer.data);
         let fieldsets = document.getElementsByTagName("fieldset");
         for (let i = 0; i < fieldsets.length; i++) {
@@ -133,7 +132,6 @@ var Eisdealer;
             input.className = "validated";
         }
     }
-    //neue Funktionen
     function schreibeURL() {
         let url = "https://eia2-winklerfranziska.herokuapp.com/?";
         for (let i = 0; i < inputs.length; i++) {

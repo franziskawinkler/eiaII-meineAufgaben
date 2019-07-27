@@ -10,9 +10,8 @@ namespace Eisdealer {
     window.addEventListener("load", init);
 
 
-    function init(_event: Event): void {
-        console.log(data);
-        console.log("init3");
+    function init(): void {
+        console.log("init");
         writeHTML(data);
         let fieldsets: HTMLCollectionOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
         for (let i: number = 0; i < fieldsets.length; i++) {
@@ -147,8 +146,6 @@ namespace Eisdealer {
             input.className = "validated";
         }
     }
-    //neue Funktionen
-
     function schreibeURL(): void {
         let url: string = "https://eia2-winklerfranziska.herokuapp.com/?";
         for (let i: number = 0; i < inputs.length; i++) {
