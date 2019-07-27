@@ -24,6 +24,7 @@ Mongo.MongoClient.connect(databaseURL, { connectTimeoutMS: 8000 }, handleConnect
 
 // connect-handler receives two standard parameters, an error object and a database client object
 function handleConnect(_e: Mongo.MongoError, _client: Mongo.MongoClient): void {
+    debugger;
     if (_e)
         console.log("Unable to connect to database, error: ", _e);
     else {

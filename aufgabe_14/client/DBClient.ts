@@ -13,13 +13,13 @@ namespace DBClient {
     }
 
     export function insert(_event: Event): void {
-        let eissorte: EISDEALER[];
-        let toppings: EISDEALER[];
-        let saucen: EISDEALER[]; 
+        let eissorte: HTMLInputElement = <HTMLInputElement>document.getElementById("sorte");
+        let toppings: HTMLInputElement = <HTMLInputElement>document.getElementById("topping");
+        let saucen: HTMLInputElement = <HTMLInputElement>document.getElementById("sauce"); 
         let query: string = "command=insert";
-        query += "&sort=" + eissorte;
-        query += "&toppings=" + toppings;
-        query += "&sauce=" + saucen;
+        query += "&sort=" + eissorte.value;
+        query += "&toppings=" + toppings.value;
+        query += "&sauce=" + saucen.value;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }

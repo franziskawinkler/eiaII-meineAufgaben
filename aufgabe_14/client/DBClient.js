@@ -12,13 +12,13 @@ var DBClient;
         deleteButton.addEventListener("click", remove);
     }
     function insert(_event) {
-        let eissorte;
-        let toppings;
-        let saucen;
+        let eissorte = document.getElementById("sorte");
+        let toppings = document.getElementById("topping");
+        let saucen = document.getElementById("sauce");
         let query = "command=insert";
-        query += "&sort=" + eissorte;
-        query += "&toppings=" + toppings;
-        query += "&sauce=" + saucen;
+        query += "&sort=" + eissorte.value;
+        query += "&toppings=" + toppings.value;
+        query += "&sauce=" + saucen.value;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }

@@ -10,6 +10,7 @@ var Server;
     if (!port)
         port = 8100;
     let server = Http.createServer();
+    debugger;
     server.addListener("listening", handleListen);
     server.addListener("request", handleRequest);
     //	server.addListener("request", handleAdminRequest);

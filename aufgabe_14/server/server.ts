@@ -8,6 +8,7 @@ namespace Server {
 		port = 8100;
 
 	let server: Http.Server = Http.createServer();
+	debugger;
 	server.addListener("listening", handleListen);
 	server.addListener("request", handleRequest);
 	//	server.addListener("request", handleAdminRequest);
