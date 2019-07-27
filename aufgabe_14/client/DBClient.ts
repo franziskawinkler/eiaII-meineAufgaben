@@ -8,9 +8,10 @@ namespace DBClient {
         console.log("Init");
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
-    
+        let deleteButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("delete");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
+        deleteButton.addEventListener("click", remove);
     }
 
     export function insert(_event: Event): void {
@@ -31,7 +32,9 @@ namespace DBClient {
 
         sendRequest(query, handleFindResponse);
     }
+    function remove() {
 
+    };
     function sendRequest(_query: string, _callback: EventListener): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);

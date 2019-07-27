@@ -8,8 +8,10 @@ var DBClient;
         console.log("Init");
         let insertButton = document.getElementById("insert");
         let refreshButton = document.getElementById("refresh");
+        let deleteButton = document.getElementById("delete");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
+        deleteButton.addEventListener("click", remove);
     }
     function insert(_event) {
         let eissorte;
@@ -29,6 +31,9 @@ var DBClient;
         sendRequest(query, handleFindResponse);
     }
     DBClient.refresh = refresh;
+    function remove() {
+    }
+    ;
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);
