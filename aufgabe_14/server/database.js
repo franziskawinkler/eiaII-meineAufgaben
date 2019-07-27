@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 //Object.defineProperty(exports, "__esModule", { value: true });
 const Mongo = require("mongodb");
 console.log("Database starting");
-//https://mongodbnetbrowser.herokuapp.com/
 let databaseURL = "mongodb://localhost:27017";
 let databaseName = "eisdealer";
 let db;
@@ -50,7 +49,6 @@ function findAll(_callback) {
         if (_e)
             _callback("Error" + _e);
         else
-            // stringify creates a json-string, passed it back to _callback
             _callback(JSON.stringify(auswahlArray));
     }
 }

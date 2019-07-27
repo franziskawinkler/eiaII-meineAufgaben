@@ -2,7 +2,6 @@
 //Object.defineProperty(exports, "__esModule", { value: true });
 import * as Mongo from "mongodb";
 console.log("Database starting");
-//https://mongodbnetbrowser.herokuapp.com/
 let databaseURL: string = "mongodb://localhost:27017";
 let databaseName: string = "eisdealer";
 let db: Mongo.Db;
@@ -54,7 +53,6 @@ export function findAll(_callback: Function): void {
         if (_e)
             _callback("Error" + _e);
         else
-            // stringify creates a json-string, passed it back to _callback
             _callback(JSON.stringify(auswahlArray));
     }
 }
