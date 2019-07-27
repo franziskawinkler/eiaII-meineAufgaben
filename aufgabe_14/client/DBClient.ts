@@ -1,5 +1,3 @@
-import { stringify } from "querystring";
-
 namespace DBClient {
     window.addEventListener("load", init);
     let serverAddress: string = "https://eia2-winklerfranziska.herokuapp.com";
