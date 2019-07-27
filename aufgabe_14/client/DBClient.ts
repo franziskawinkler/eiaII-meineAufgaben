@@ -13,9 +13,9 @@ namespace DBClient {
     }
 
     export function insert(_event: Event): void {
-        let eissorte: string; 
-        let toppings: string;
-        let saucen: string;
+        let eissorte: EISDEALER[];
+        let toppings: EISDEALER[];
+        let saucen: EISDEALER[]; 
         let query: string = "command=insert";
         query += "&sort=" + eissorte;
         query += "&toppings=" + toppings;
