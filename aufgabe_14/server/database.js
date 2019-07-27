@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-Object.defineProperty(exports, "__esModule", { value: true });
+//"use strict";
+//Object.defineProperty(exports, "__esModule", { value: true });
 const Mongo = require("mongodb");
 console.log("Database starting");
 //https://mongodbnetbrowser.herokuapp.com/

@@ -1,5 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+//"use strict";
+//Object.defineProperty(exports, "__esModule", { value: true });
 import * as Mongo from "mongodb";
 console.log("Database starting");
 //https://mongodbnetbrowser.herokuapp.com/
