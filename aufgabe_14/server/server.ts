@@ -21,7 +21,7 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
 	console.log("Request received");
 	let query: AssocStringString = <AssocStringString>Url.parse(_request.url, true).query;
 	let command: string = query["command"];
-
+	
 	switch (command) {
 		case "insert":
 			let eisdealer: EISDEALER = {
@@ -29,25 +29,7 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
 				name: query["name"],
 				preis: parseInt(query["preis"]),
 				id: query["id"],
-				value: parseInt(query["value"]),
-				schwarzeVanille: query["Schwarze-Vanille"],
-				sesamDattel: query["Sesam-Dattel"],
-				waldmeister: query["Waldmeister"],
-				orangeZartbitter: query["Orange-Zartbitter"],
-				minzeSchoko: query["Minze-Schoko"],
-				latteMacchiato: query["Latte-Macchiato"],
-				granatapfel: query["Granatapfel"],
-				erdbeer: query["Erdbeer"],
-				schokolade: query["Schokolade"],
-				vanille: query["Vanille"],
-				straciatella: query["Straciatella"],
-				sahne: query["Sahne"],
-				streusel: query["Streusel"],
-				himbeersauce: query["Himbeersauce"],
-				schokoladeWeissSauce: query["Schokolade-weiss-sauce"],
-				schokoladensauce: query["Schokoladensauce"],
-				waffel: query["Waffel"],
-				becher: query["Becher"]
+				value: parseInt(query["value"])
 			};
 			Database.insert(eisdealer);
 			respond(_response, "storing data");
@@ -55,34 +37,29 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
 		case "refresh":
 			Database.findAll(findCallback);
 			break;
-		case "order":
-			let save: EISDEALER = {
-				type: query["type"],
-				name: query["name"],
-				preis: parseInt(query["preis"]),
-				id: query["id"],
-				value: parseInt(query["value"]),
-				schwarzeVanille: query["Schwarze-Vanille"],
-				sesamDattel: query["Sesam-Dattel"],
-				waldmeister: query["Waldmeister"],
-				orangeZartbitter: query["Orange-Zartbitter"],
-				minzeSchoko: query["Minze-Schoko"],
-				latteMacchiato: query["Latte-Macchiato"],
-				granatapfel: query["Granatapfel"],
-				erdbeer: query["Erdbeer"],
-				schokolade: query["Schokolade"],
-				vanille: query["Vanille"],
-				straciatella: query["Straciatella"],
-				sahne: query["Sahne"],
-				streusel: query["Streusel"],
-				himbeersauce: query["Himbeersauce"],
-				schokoladeWeissSauce: query["Schokolade-weiss-sauce"],
-				schokoladensauce: query["Schokoladensauce"],
-				waffel: query["Waffel"],
-				becher: query["Becher"]
-			};
-			Database.insert(save);
-			respond(_response, "storing data");
+			//case "order":
+		//	let save: ORDER = {
+		//		schwarzeVanille: query["Schwarze-Vanille"],
+		//		sesamDattel: query["Sesam-Dattel"],
+		//		waldmeister: query["Waldmeister"],
+		//		orangeZartbitter: query["Orange-Zartbitter"],
+		//		minzeSchoko: query["Minze-Schoko"],
+		//		latteMacchiato: query["Latte-Macchiato"],
+		//		granatapfel: query["Granatapfel"],
+		//		erdbeer: query["Erdbeer"],
+		//		schokolade: query["Schokolade"],
+		//		vanille: query["Vanille"],
+		//		straciatella: query["Straciatella"],
+		//		sahne: query["Sahne"],
+		//		streusel: query["Streusel"],
+		//		himbeersauce: query["Himbeersauce"],
+		//		schokoladeWeissSauce: query["Schokolade-weiss-sauce"],
+		//		schokoladensauce: query["Schokoladensauce"],
+		//		waffel: query["Waffel"],
+		//		becher: query["Becher"]
+		//	};
+		//	Database.insert(save);
+		//	respond(_response, "storing data");
 
 		default:
 			respond(_response, "unknown command: " + command);
