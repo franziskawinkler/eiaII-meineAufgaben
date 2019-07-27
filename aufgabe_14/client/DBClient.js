@@ -1,5 +1,5 @@
-var DBClient;
-(function (DBClient) {
+var Eisdealer;
+(function (Eisdealer) {
     window.addEventListener("load", init);
     let serverAddress = "https://eia2-winklerfranziska.herokuapp.com";
     function init(_event) {
@@ -22,13 +22,13 @@ var DBClient;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
-    DBClient.insert = insert;
+    Eisdealer.insert = insert;
     function refresh(_event) {
         let query = "command=refresh";
         console.log("loadingData");
         sendRequest(query, handleFindResponse);
     }
-    DBClient.refresh = refresh;
+    Eisdealer.refresh = refresh;
     function remove() {
     }
     ;
@@ -54,5 +54,5 @@ var DBClient;
             console.log(responseAsJson);
         }
     }
-})(DBClient || (DBClient = {}));
+})(Eisdealer || (Eisdealer = {}));
 //# sourceMappingURL=DBClient.js.map

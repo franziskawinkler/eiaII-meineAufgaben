@@ -23,7 +23,6 @@ if (process.env.NODE_ENV == "production") {
 Mongo.MongoClient.connect(databaseURL, { connectTimeoutMS: 8000 }, handleConnect);
 // connect-handler receives two standard parameters, an error object and a database client object
 function handleConnect(_e, _client) {
-    debugger;
     if (_e)
         console.log("Unable to connect to database, error: ", _e);
     else {
@@ -36,8 +35,8 @@ function handleConnect(_e, _client) {
     }
 }
 function insert(_doc) {
-    // try insertion then activate callback "handleInsert"
-    eintrag.insertOne(_doc, handleInsert);
+    eintrag = db.collection("icecreamType"),
+        eintrag.insertOne(_doc, handleInsert);
 }
 exports.insert = insert;
 // insertion-handler receives an error object as standard parameter

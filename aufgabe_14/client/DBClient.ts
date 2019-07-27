@@ -1,4 +1,4 @@
-namespace DBClient {
+namespace Eisdealer {
     window.addEventListener("load", init);
     let serverAddress: string = "https://eia2-winklerfranziska.herokuapp.com";
 
