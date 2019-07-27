@@ -22,9 +22,11 @@ function handleRequest(_request, _response) {
     switch (command) {
         case "insert":
             let eisdealer = {
-                eissorten: query["name"],
-                toppings: query["topping"],
-                saucen: query["sauce"]
+                type: query["type"],
+                name: query["name"],
+                preis: parseInt(query["preis"]),
+                id: query["id"],
+                value: parseInt(query["value"])
             };
             Database.insert(eisdealer);
             respond(_response, "storing data");

@@ -9,7 +9,6 @@ let cone;
 let dip;
 let icecreamType;
 let toppings;
-let eintrag;
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
     //databaseURL = "mongodb+srv://username:password@hostname:port/database"
@@ -47,7 +46,7 @@ function handleInsert(_e) {
     console.log("Database insertion returned -> " + _e);
 }
 function findAll(_callback) {
-    var cursor = eintrag.find();
+    var cursor = icecreamType.find();
     cursor.toArray(prepareAnswer);
     function prepareAnswer(_e, auswahlArray) {
         if (_e)

@@ -13,13 +13,17 @@ namespace Eisdealer {
     }
 
     export function insert(_event: Event): void {
-        let eissorte: HTMLInputElement = <HTMLInputElement>document.getElementById("sorte");
-        let toppings: HTMLInputElement = <HTMLInputElement>document.getElementById("topping");
-        let saucen: HTMLInputElement = <HTMLInputElement>document.getElementById("sauce"); 
+        let type: HTMLInputElement = <HTMLInputElement>document.getElementById("type");
+        let name: HTMLInputElement = <HTMLInputElement>document.getElementById("name");
+        let preis: HTMLInputElement = <HTMLInputElement>document.getElementById("preis"); 
+        let id: HTMLInputElement = <HTMLInputElement>document.getElementById("id");
+        let value: HTMLInputElement = <HTMLInputElement>document.getElementById("value"); 
         let query: string = "command=insert";
-        query += "&sort=" + eissorte.value;
-        query += "&toppings=" + toppings.value;
-        query += "&sauce=" + saucen.value;
+        query += "&type=" + type.value;
+        query += "&name=" + name.value;
+        query += "&preis=" + preis.value;
+        query += "&id" + id.value;
+        query += "&value" + value.value; 
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
@@ -32,7 +36,7 @@ namespace Eisdealer {
     }
     function remove() {
 
-    };
+    }
     function sendRequest(_query: string, _callback: EventListener): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);

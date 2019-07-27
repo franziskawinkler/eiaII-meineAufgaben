@@ -7,7 +7,7 @@ let cone: Mongo.Collection;
 let dip: Mongo.Collection;
 let icecreamType: Mongo.Collection;
 let toppings: Mongo.Collection;
-let eintrag: Mongo.Collection;
+
 
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
@@ -50,7 +50,7 @@ function handleInsert(_e: Mongo.MongoError): void {
 }
 
 export function findAll(_callback: Function): void {
-    var cursor: Mongo.Cursor = eintrag.find();
+    var cursor: Mongo.Cursor = icecreamType.find();
     cursor.toArray(prepareAnswer);
 
     function prepareAnswer(_e: Mongo.MongoError, auswahlArray: EISDEALER[]): void {

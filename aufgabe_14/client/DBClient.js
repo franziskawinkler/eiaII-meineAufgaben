@@ -12,13 +12,17 @@ var Eisdealer;
         deleteButton.addEventListener("click", remove);
     }
     function insert(_event) {
-        let eissorte = document.getElementById("sorte");
-        let toppings = document.getElementById("topping");
-        let saucen = document.getElementById("sauce");
+        let type = document.getElementById("type");
+        let name = document.getElementById("name");
+        let preis = document.getElementById("preis");
+        let id = document.getElementById("id");
+        let value = document.getElementById("value");
         let query = "command=insert";
-        query += "&sort=" + eissorte.value;
-        query += "&toppings=" + toppings.value;
-        query += "&sauce=" + saucen.value;
+        query += "&type=" + type.value;
+        query += "&name=" + name.value;
+        query += "&preis=" + preis.value;
+        query += "&id" + id.value;
+        query += "&value" + value.value;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
@@ -31,7 +35,6 @@ var Eisdealer;
     Eisdealer.refresh = refresh;
     function remove() {
     }
-    ;
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);
