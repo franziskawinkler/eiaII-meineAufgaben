@@ -34,8 +34,8 @@ namespace Eisdealer {
 
         sendRequest(query, handleFindResponse);
     }
-    function remove() {
-
+    function remove(): void {
+//
     }
     function sendRequest(_query: string, _callback: EventListener): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();

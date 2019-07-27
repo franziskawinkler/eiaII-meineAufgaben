@@ -34,6 +34,7 @@ var Eisdealer;
     }
     Eisdealer.refresh = refresh;
     function remove() {
+        //
     }
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
