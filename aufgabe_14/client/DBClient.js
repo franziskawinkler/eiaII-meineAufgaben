@@ -1,3 +1,9 @@
+/*Endabgabe
+Name: <Franziska Winkler>
+Matrikel: <260944>
+Datum: <26.07.2019>
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+*/
 var Eisdealer;
 (function (Eisdealer) {
     window.addEventListener("load", init);

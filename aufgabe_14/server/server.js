@@ -1,5 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/*Endabgabe
+Name: <Franziska Winkler>
+Matrikel: <260944>
+Datum: <26.07.2019>
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+*/
 const Http = require("http");
 const Url = require("url");
 const Database = require("./database");
