@@ -77,6 +77,7 @@ function handleRemove(_e: Mongo.MongoError): void {
 }
 
 export function findAll(_callback: Function): void {
+    array = [];
     icecreamType.find().toArray(prepareAnswer);
     cone.find().toArray(prepareAnswer);
     dip.find().toArray(prepareAnswer);

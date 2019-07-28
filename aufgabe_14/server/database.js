@@ -72,6 +72,7 @@ function handleRemove(_e) {
     console.log("Database dletion returned -> " + _e);
 }
 function findAll(_callback) {
+    array = [];
     icecreamType.find().toArray(prepareAnswer);
     cone.find().toArray(prepareAnswer);
     dip.find().toArray(prepareAnswer);
