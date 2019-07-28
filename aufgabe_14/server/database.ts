@@ -72,12 +72,11 @@ function handleInsert(_e: Mongo.MongoError): void {
 }
 
 export function findAll(_callback: Function): void {
-    var cursor: Mongo.Cursor = cone.find();
-    console.log(cursor);
+    let cursor: Mongo.Cursor = cone.find();
+    cursor.push(icecreamType.find());
     cursor.toArray(prepareAnswer);
 
     function prepareAnswer(_e: Mongo.MongoError, auswahlArray: EISDEALER[]): void {
-        debugger;
         if (_e)
             _callback("Error" + _e);
         else
