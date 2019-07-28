@@ -51,7 +51,7 @@ function insertOrder(_doc) {
 }
 exports.insertOrder = insertOrder;
 function remove(_doc) {
-    var deleteQuery = { _id: _doc.id };
+    let deleteQuery = { _id: new Mongo.ObjectID(_doc.id) };
     switch (_doc.type) {
         case "cone":
             cone.deleteOne(deleteQuery, handleRemove);
