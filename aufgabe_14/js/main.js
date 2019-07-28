@@ -138,20 +138,6 @@ var Eisdealer;
             input.className = "validated";
         }
     }
-    function sendRequestWithCustomData(url) {
-        console.log("sendRequest");
-        let xhr = new XMLHttpRequest();
-        xhr.open("GET", url, true);
-        xhr.addEventListener("readystatechange", handleStateChange);
-        xhr.send();
-        console.log("request sended");
-    }
-    function handleStateChange(_event) {
-        let xhr = _event.target;
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            document.getElementById("submitÜbersicht").innerHTML = xhr.response;
-        }
-    }
     function order() {
         console.log("order...");
         let url = "command=order&eissorte=";

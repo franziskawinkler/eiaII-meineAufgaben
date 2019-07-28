@@ -151,21 +151,6 @@ namespace Eisdealer {
         }
     }
 
-    function sendRequestWithCustomData(url: string): void {
-        console.log("sendRequest");
-        let xhr: XMLHttpRequest = new XMLHttpRequest();
-        xhr.open("GET", url, true);
-        xhr.addEventListener("readystatechange", handleStateChange);
-        xhr.send();
-        console.log("request sended");
-    }
-    function handleStateChange(_event: ProgressEvent): void {
-        let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            document.getElementById("submitÜbersicht").innerHTML = xhr.response;
-        }
-    }
-
     function order(): void {
         console.log("order...");
         let url: string = "command=order&eissorte=";
