@@ -33,6 +33,26 @@ function handleConnect(_e, _client) {
     }
 }
 function insert(_doc) {
+    switch (_doc[name]) {
+        case "cone":
+            cone = db.collection("cone"),
+                cone.insertOne(_doc, handleInsert);
+        case "dip":
+            dip = db.collection("dip"),
+                dip.insertOne(_doc, handleInsert);
+        case "icecreamType":
+            icecreamType = db.collection("icecreamType"),
+                icecreamType.insertOne(_doc, handleInsert);
+        case "toppings":
+            toppings = db.collection("toppings"),
+                toppings.insertOne(_doc, handleInsert);
+        case "order":
+            order = db.collection("order"),
+                order.insertOne(_doc, handleInsert);
+    }
+}
+exports.insert = insert;
+function remove(_doc) {
     cone = db.collection("cone"),
         cone.insertOne(_doc, handleInsert);
     dip = db.collection("dip"),
@@ -41,18 +61,18 @@ function insert(_doc) {
         icecreamType.insertOne(_doc, handleInsert);
     toppings = db.collection("toppings"),
         toppings.insertOne(_doc, handleInsert);
-    order = db.collection("order"),
-        order.insertOne(_doc, handleInsert);
 }
-exports.insert = insert;
+exports.remove = remove;
 // insertion-handler receives an error object as standard parameter
 function handleInsert(_e) {
     console.log("Database insertion returned -> " + _e);
 }
 function findAll(_callback) {
     var cursor = icecreamType.find();
+    console.log(cursor);
     cursor.toArray(prepareAnswer);
     function prepareAnswer(_e, auswahlArray) {
+        debugger;
         if (_e)
             _callback("Error" + _e);
         else

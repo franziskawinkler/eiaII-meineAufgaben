@@ -36,6 +36,26 @@ function handleConnect(_e: Mongo.MongoError, _client: Mongo.MongoClient): void {
 }
 
 export function insert(_doc: EISDEALER): void {
+    switch (_doc[name]) {
+        case "cone":
+    cone = db.collection("cone"),
+    cone.insertOne(_doc, handleInsert);
+    case "dip":
+    dip = db.collection("dip"),
+    dip.insertOne(_doc, handleInsert);
+    case "icecreamType":
+    icecreamType = db.collection("icecreamType"),
+    icecreamType.insertOne(_doc, handleInsert);
+    case "toppings":
+    toppings = db.collection("toppings"),
+    toppings.insertOne(_doc, handleInsert);
+    case "order":
+    order = db.collection("order"),
+    order.insertOne(_doc, handleInsert);
+}
+}
+
+export function remove(_doc: Object): void {
     cone = db.collection("cone"),
     cone.insertOne(_doc, handleInsert);
     dip = db.collection("dip"),
@@ -44,8 +64,6 @@ export function insert(_doc: EISDEALER): void {
     icecreamType.insertOne(_doc, handleInsert);
     toppings = db.collection("toppings"),
     toppings.insertOne(_doc, handleInsert);
-    order = db.collection("order"),
-    order.insertOne(_doc, handleInsert);
 }
 
 // insertion-handler receives an error object as standard parameter
@@ -55,9 +73,11 @@ function handleInsert(_e: Mongo.MongoError): void {
 
 export function findAll(_callback: Function): void {
     var cursor: Mongo.Cursor = icecreamType.find();
+    console.log(cursor);
     cursor.toArray(prepareAnswer);
 
     function prepareAnswer(_e: Mongo.MongoError, auswahlArray: EISDEALER[]): void {
+        debugger;
         if (_e)
             _callback("Error" + _e);
         else

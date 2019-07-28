@@ -6,10 +6,11 @@ namespace Eisdealer {
         console.log("Init");
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
-        let deleteButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("delete");
+        let deleteButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("deleteButton");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
         deleteButton.addEventListener("click", remove);
+        refresh();
     }
 
     export function insert(_event: Event): void {
@@ -22,20 +23,24 @@ namespace Eisdealer {
         query += "&type=" + type.value;
         query += "&name=" + name.value;
         query += "&preis=" + preis.value;
-        query += "&id" + id.value;
-        query += "&value" + value.value; 
+        query += "&id=" + id.value;
+        query += "&value=" + value.value; 
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
 
-    export function refresh(_event: Event): void {
+    export function refresh(): void {
         let query: string = "command=refresh";
         console.log("loadingData");
 
         sendRequest(query, handleFindResponse);
     }
     function remove(): void {
-//
+        let id: HTMLInputElement = <HTMLInputElement>document.getElementById("id");
+        let query: string = "command=remove";
+        query += "&id=" + id.value;
+        console.log(query);
+        sendRequest(query, handleRemoveResponse);
     }
     function sendRequest(_query: string, _callback: EventListener): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
@@ -44,12 +49,20 @@ namespace Eisdealer {
         xhr.send();
         console.log("request sended");
     }
-
+    function handleRemoveResponse(_event: ProgressEvent): void {
+        let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            alert(xhr.response);
+            refresh();
+        }
+    }
     function handleInsertResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
             alert(xhr.response);
+            refresh();
         }
+    
     }
 
     function handleFindResponse(_event: ProgressEvent): void {

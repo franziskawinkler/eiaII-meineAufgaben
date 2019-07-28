@@ -6,10 +6,11 @@ var Eisdealer;
         console.log("Init");
         let insertButton = document.getElementById("insert");
         let refreshButton = document.getElementById("refresh");
-        let deleteButton = document.getElementById("delete");
+        let deleteButton = document.getElementById("deleteButton");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
         deleteButton.addEventListener("click", remove);
+        refresh();
     }
     function insert(_event) {
         let type = document.getElementById("type");
@@ -21,20 +22,24 @@ var Eisdealer;
         query += "&type=" + type.value;
         query += "&name=" + name.value;
         query += "&preis=" + preis.value;
-        query += "&id" + id.value;
-        query += "&value" + value.value;
+        query += "&id=" + id.value;
+        query += "&value=" + value.value;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
     Eisdealer.insert = insert;
-    function refresh(_event) {
+    function refresh() {
         let query = "command=refresh";
         console.log("loadingData");
         sendRequest(query, handleFindResponse);
     }
     Eisdealer.refresh = refresh;
     function remove() {
-        //
+        let id = document.getElementById("id");
+        let query = "command=remove";
+        query += "&id=" + id.value;
+        console.log(query);
+        sendRequest(query, handleRemoveResponse);
     }
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
@@ -43,10 +48,18 @@ var Eisdealer;
         xhr.send();
         console.log("request sended");
     }
+    function handleRemoveResponse(_event) {
+        let xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            alert(xhr.response);
+            refresh();
+        }
+    }
     function handleInsertResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             alert(xhr.response);
+            refresh();
         }
     }
     function handleFindResponse(_event) {

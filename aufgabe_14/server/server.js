@@ -32,19 +32,32 @@ function handleRequest(_request, _response) {
             respond(_response, "storing data");
             break;
         case "refresh":
+            console.log('refresh');
             Database.findAll(findCallback);
             break;
-        //case "order":
-        //	let save: ORDER = {
-        //		schwarzeVanille: query["Schwarze-Vanille"],
-        //		sesamDattel: query["Sesam-Dattel"],
-        //		waldmeister: query["Waldmeister"],
-        //		orangeZartbitter: query["Orange-Zartbitter"],
-        //		minzeSchoko: query["Minze-Schoko"],
-        //		latteMacchiato: query["Latte-Macchiato"],
-        //		granatapfel: query["Granatapfel"],
+        case "remove":
+            let remove = {
+                id: query["id"]
+            };
+            Database.remove(remove);
+            respond(_response, "storing data");
+            break;
+        //	case "order":
+        //		let save: EISDEALER = {
+        //			type: query["type"],
+        //			name: query["name"],
+        //			preis: parseInt(query["preis"]),
+        //			id: query["id"],
+        //			value: parseInt(query["value"]),
+        //			schwarzeVanille: query["Schwarze-Vanille"],
+        //			sesamDattel: query["Sesam-Dattel"],
+        //			waldmeister: query["Waldmeister"],
+        //			orangeZartbitter: query["Orange-Zartbitter"],
+        //			minzeSchoko: query["Minze-Schoko"],
+        //			latteMacchiato: query["Latte-Macchiato"],
+        //			granatapfel: query["Granatapfel"],
         //		erdbeer: query["Erdbeer"],
-        //		schokolade: query["Schokolade"],
+        ///			schokolade: query["Schokolade"],
         //		vanille: query["Vanille"],
         //		straciatella: query["Straciatella"],
         //		sahne: query["Sahne"],
