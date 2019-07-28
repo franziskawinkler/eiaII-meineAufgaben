@@ -51,6 +51,7 @@ var Eisdealer;
         let xhr = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);
         xhr.addEventListener("readystatechange", _callback);
+        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
         xhr.send();
         console.log("request sended");
     }
