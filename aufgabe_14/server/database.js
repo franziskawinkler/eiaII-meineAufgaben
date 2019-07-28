@@ -72,13 +72,21 @@ function findAll(_callback) {
     let cursor = toppings.find();
     icecreamType.find().toArray(prepareAnswer);
     cone.find().toArray(prepareAnswer);
-    cursor.toArray(prepareAnswer);
+    cursor.toArray(sendAnswer);
     function prepareAnswer(_e, auswahlArray) {
         if (_e)
             _callback("Error" + _e);
-        else
+        else {
             array.concat(auswahlArray);
-        _callback(JSON.stringify(array));
+        }
+    }
+    function sendAnswer(_e, auswahlArray) {
+        if (_e)
+            _callback("Error" + _e);
+        else {
+            array.concat(auswahlArray);
+            _callback(JSON.stringify(array));
+        }
     }
 }
 exports.findAll = findAll;

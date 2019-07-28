@@ -76,13 +76,21 @@ export function findAll(_callback: Function): void {
     let cursor: Mongo.Cursor = toppings.find();
     icecreamType.find().toArray(prepareAnswer);
     cone.find().toArray(prepareAnswer);
-    cursor.toArray(prepareAnswer);
+    cursor.toArray(sendAnswer);
 
     function prepareAnswer(_e: Mongo.MongoError, auswahlArray: EISDEALER[]): void {
         if (_e)
             _callback("Error" + _e);
-        else
+        else {
+            array.concat(auswahlArray);
+        }
+    }
+    function sendAnswer(_e: Mongo.MongoError, auswahlArray: EISDEALER[]): void {
+        if (_e)
+            _callback("Error" + _e);
+        else {
             array.concat(auswahlArray);
             _callback(JSON.stringify(array));
+        }
     }
 }
