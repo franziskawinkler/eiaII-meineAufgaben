@@ -73,7 +73,12 @@ namespace Eisdealer {
     
     }
     function handleLoadOrderResponse(_event: ProgressEvent): void {
-       
+        let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            document.getElementById("order").innerHTML = xhr.response;
+            let responseAsJson: JSON = JSON.parse(xhr.response);
+            console.log(responseAsJson);
+        }
     }
 
     function handleFindResponse(_event: ProgressEvent): void {

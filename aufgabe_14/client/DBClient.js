@@ -70,6 +70,12 @@ var Eisdealer;
         }
     }
     function handleLoadOrderResponse(_event) {
+        let xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            document.getElementById("order").innerHTML = xhr.response;
+            let responseAsJson = JSON.parse(xhr.response);
+            console.log(responseAsJson);
+        }
     }
     function handleFindResponse(_event) {
         let xhr = _event.target;
