@@ -82,14 +82,14 @@ export function findAll(_callback: Function): void {
         if (_e)
             _callback("Error" + _e);
         else {
-            array.concat(auswahlArray);
+            array = array.concat(auswahlArray);
         }
     }
     function sendAnswer(_e: Mongo.MongoError, auswahlArray: EISDEALER[]): void {
         if (_e)
             _callback("Error" + _e);
         else {
-            array.concat(auswahlArray);
+            array = array.concat(auswahlArray);
             _callback(JSON.stringify(array));
         }
     }

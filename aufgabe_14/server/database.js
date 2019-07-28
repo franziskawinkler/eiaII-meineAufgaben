@@ -77,14 +77,14 @@ function findAll(_callback) {
         if (_e)
             _callback("Error" + _e);
         else {
-            array.concat(auswahlArray);
+            array = array.concat(auswahlArray);
         }
     }
     function sendAnswer(_e, auswahlArray) {
         if (_e)
             _callback("Error" + _e);
         else {
-            array.concat(auswahlArray);
+            array = array.concat(auswahlArray);
             _callback(JSON.stringify(array));
         }
     }
