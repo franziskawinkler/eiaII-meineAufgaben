@@ -68,10 +68,8 @@ function handleInsert(_e) {
     console.log("Database insertion returned -> " + _e);
 }
 function findAll(_callback) {
-    let cursor = cone.find();
+    let cursor = toppings.find();
     cursor.toArray(prepareAnswer);
-    let cursor2 = icecreamType.find();
-    cursor2.toArray(prepareAnswer);
     function prepareAnswer(_e, auswahlArray) {
         if (_e)
             _callback("Error" + _e);
