@@ -71,9 +71,10 @@ var Eisdealer;
     function handleLoadOrderResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            document.getElementById("order").innerHTML = xhr.response;
+            console.log(xhr.response);
             let responseAsJson = JSON.parse(xhr.response);
             console.log(responseAsJson);
+            document.getElementById("order").innerHTML = xhr.response;
         }
     }
     function handleFindResponse(_event) {
