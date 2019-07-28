@@ -60,6 +60,7 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
 				break;		
 		case "loadOrder":
 			Database.loadOrder(findCallback);
+			break;
 		default:
 			respond(_response, "unknown command: " + command);
 			break;

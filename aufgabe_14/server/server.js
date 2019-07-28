@@ -56,6 +56,7 @@ function handleRequest(_request, _response) {
             break;
         case "loadOrder":
             Database.loadOrder(findCallback);
+            break;
         default:
             respond(_response, "unknown command: " + command);
             break;
