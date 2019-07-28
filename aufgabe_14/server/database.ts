@@ -73,8 +73,9 @@ function handleInsert(_e: Mongo.MongoError): void {
 
 export function findAll(_callback: Function): void {
     let cursor: Mongo.Cursor = cone.find();
-    cursor.push(icecreamType.find());
     cursor.toArray(prepareAnswer);
+    let cursor2: Mongo.Cursor = icecreamType.find();
+    cursor2.toArray(prepareAnswer);
 
     function prepareAnswer(_e: Mongo.MongoError, auswahlArray: EISDEALER[]): void {
         if (_e)
