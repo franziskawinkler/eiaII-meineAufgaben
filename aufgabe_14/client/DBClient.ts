@@ -3,7 +3,7 @@ namespace Eisdealer {
     let serverAddress: string = "https://eia2-winklerfranziska.herokuapp.com";
 
     function init(_event: Event): void {
-        console.log("Init");
+        console.log("Inits");
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
         let refreshButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("refresh");
         let deleteButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("deleteButton");
@@ -27,6 +27,40 @@ namespace Eisdealer {
         query += "&value=" + value.value; 
         console.log(query);
         sendRequest(query, handleInsertResponse);
+    }
+    function order(): void {
+        console.log("order...");
+        let url: string = "command=order?eissorte=";
+        let eissortenInputs: NodeListOf<HTMLInputElement>;
+        eissortenInputs = document.querySelectorAll("[data-type=\"eissorte\"]");
+        for (let i: number = 0; i < eissortenInputs.length; i++) {
+            let input: HTMLInputElement = eissortenInputs[i];
+            //wenn der typ der input elemente number ist (=eissorten) und die anzahl größer null ist dann soll dies in die URL hinzugefügt werden
+            if (input.value > "0") {
+                url += `${input.name}:${input.value}Kugeln&`;
+            }
+        }
+        /*
+        for (let i: number = 0; i < inputs.length; i++) {
+            debugger;
+            let input: HTMLInputElement = inputs[i];
+            //wenn der typ der input elemente number ist (=eissorten) und die anzahl größer null ist dann soll dies in die URL hinzugefügt werden
+            if (input.type == "number" && input.value > "0") {
+                url += `${input.name}:${input.value}Kugeln&`;
+            }
+            //für radiobutton oder chedckbox
+            if (input.checked == true) {
+                if (input.type == "checkbox" || input.type == "radio") {
+                    url += `${input.name}&`;
+                }
+            }
+        }
+        url += preisElement.innerText = String(gesamtPreis.toFixed(2));
+        url += `Euro`;
+        
+        */
+        console.log(url);
+        sendRequest(url, handleOrderResponse);
     }
 
     export function refresh(): void {
@@ -73,6 +107,10 @@ namespace Eisdealer {
             let responseAsJson: JSON = JSON.parse(xhr.response);
             console.log(responseAsJson);
         }
+    }
+
+    function handleOrderResponse(_event: ProgressEvent): void {
+        console.log("ordered");
     }
 
 }

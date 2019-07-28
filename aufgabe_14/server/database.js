@@ -43,11 +43,13 @@ function insert(_doc) {
             icecreamType.insertOne(_doc, handleInsert);
         case "toppings":
             toppings.insertOne(_doc, handleInsert);
-        case "order":
-            order.insertOne(_doc, handleInsert);
     }
 }
 exports.insert = insert;
+function insertOrder(_doc) {
+    order.insertOne(_doc, handleInsert);
+}
+exports.insertOrder = insertOrder;
 function remove(_doc) {
     cone = db.collection("cone"),
         cone.insertOne(_doc, handleInsert);

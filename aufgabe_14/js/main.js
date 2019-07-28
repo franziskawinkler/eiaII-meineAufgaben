@@ -10,7 +10,6 @@ var Eisdealer;
     window.addEventListener("load", init);
     function init() {
         console.log("init");
-        refresh();
         writeHTML(Eisdealer.data);
         let fieldsets = document.getElementsByTagName("fieldset");
         for (let i = 0; i < fieldsets.length; i++) {
@@ -22,7 +21,7 @@ var Eisdealer;
         inputs = document.getElementsByTagName("input");
         preisElement = document.getElementById("preis-total");
         zusammenfassungElement = document.getElementById("zusammenfassung");
-        document.getElementById("submit").addEventListener("click", schreibeURL);
+        document.getElementById("submit").addEventListener("click", order);
     }
     function writeHTML(_data) {
         let angebot = "";
@@ -38,8 +37,8 @@ var Eisdealer;
                     let eissorte = eissorten[i];
                     fieldset +=
                         `                   
-                <label for="${eissorte.id}">${eissorte.id}</label>
-                <input type="${eissorte.type}" name="${eissorte.id}" id="${eissorte.id}" value="${eissorte.value}" step="1" min="0" max="10" data-preis="${eissorte.preis}" placeholder="0"/>
+                <label for="${eissorte.name}">${eissorte.name}</label>
+                <input type="number" name="${eissorte.name}" id="${eissorte.name}" data-type="${eissorte.type}" value="${eissorte.value}" step="1" min="0" max="10" data-preis="${eissorte.preis}" placeholder="0"/>
                 <br>`;
                 }
                 angebot += fieldset;
@@ -55,8 +54,8 @@ var Eisdealer;
                     let topping = toppings[i];
                     fieldset +=
                         `                   
-                        <input type="${topping.type}" name="${topping.id}" value="ja" id="${topping.id}" data-preis="${topping.preis}"/>
-                        <label for="${topping.id}">${topping.id}</label>
+                        <input type="checkbox" name="${topping.name}" value="ja" id="${topping.name}" data-preis="${topping.preis}"/>
+                        <label for="${topping.name}">${topping.name}</label>
                         <br>
                         `;
                 }
@@ -73,8 +72,8 @@ var Eisdealer;
                     let sauce = saucen[i];
                     fieldset +=
                         `                   
-                        <input type="${sauce.type}" name="${sauce.name}" value="${sauce.id}" id="${sauce.id}" data-preis="${sauce.preis}"/>
-                        <label for="${sauce.id}">${sauce.id}</label>
+                        <input type="radio" name="${sauce.name}" value="${sauce.name}" id="${sauce.name}" data-preis="${sauce.preis}"/>
+                        <label for="${sauce.name}">${sauce.name}</label>
                         <br>
                         `;
                 }
@@ -90,8 +89,8 @@ var Eisdealer;
                     let behälter = wOb[i];
                     fieldset +=
                         `                   
-                        <input type="${behälter.type}" name="${behälter.name}" value="${behälter.id}" id="${behälter.id}" data-preis="${behälter.preis}"/>
-                        <label for="${behälter.id}">${behälter.id}</label>
+                        <input type="radio" name="${behälter.name}" value="${behälter.name}" id="${behälter.name}" data-preis="${behälter.preis}"/>
+                        <label for="${behälter.name}">${behälter.name}</label>
                         <br>`;
                 }
                 angebot += fieldset;
@@ -118,7 +117,7 @@ var Eisdealer;
                 gesamtPreis = gesamtPreis + preis * anzahl;
                 //wenn anzahl nicht gleich null, dann die Zusammenfassung schreiben
                 if (anzahl != 0 || 0) {
-                    zusammenFassung = zusammenFassung + anzahl + " " + input.id + "\r\n";
+                    zusammenFassung = zusammenFassung + anzahl + " " + input.name + "\r\n";
                 }
             }
         }
@@ -132,26 +131,6 @@ var Eisdealer;
             let input = inputs[i];
             input.className = "validated";
         }
-    }
-    function schreibeURL() {
-        let url = "https://eia2-winklerfranziska.herokuapp.com/?";
-        for (let i = 0; i < inputs.length; i++) {
-            let input = inputs[i];
-            //wenn der typ der input elemente number ist (=eissorten) und die anzahl größer null ist dann soll dies in die URL hinzugefügt werden
-            if (input.type == "number" && input.value > "0") {
-                url += `${input.id}:${input.value}Kugeln&`;
-            }
-            //für radiobutton oder chedckbox
-            if (input.checked == true) {
-                if (input.type == "checkbox" || input.type == "radio") {
-                    url += `${input.id}&`;
-                }
-            }
-        }
-        url += preisElement.innerText = String(gesamtPreis.toFixed(2));
-        url += `Euro`;
-        console.log(url);
-        sendRequestWithCustomData(url);
     }
     function sendRequestWithCustomData(url) {
         console.log("sendRequest");
@@ -167,10 +146,42 @@ var Eisdealer;
             document.getElementById("submitÜbersicht").innerHTML = xhr.response;
         }
     }
-    function refresh() {
-        let query = "command=refresh";
-        console.log("loadingData");
-        sendRequest(query, handleFindResponse);
+    function order() {
+        console.log("order...");
+        let url = "command=order?eissorte=";
+        let eissortenInputs;
+        eissortenInputs = document.querySelectorAll("[data-type=\"eissorte\"]");
+        for (let i = 0; i < eissortenInputs.length; i++) {
+            let input = eissortenInputs[i];
+            //wenn der typ der input elemente number ist (=eissorten) und die anzahl größer null ist dann soll dies in die URL hinzugefügt werden
+            if (input.value > "0") {
+                url += `${input.name}:${input.value}Kugeln&`;
+            }
+        }
+        /*
+        for (let i: number = 0; i < inputs.length; i++) {
+            debugger;
+            let input: HTMLInputElement = inputs[i];
+            //wenn der typ der input elemente number ist (=eissorten) und die anzahl größer null ist dann soll dies in die URL hinzugefügt werden
+            if (input.type == "number" && input.value > "0") {
+                url += `${input.name}:${input.value}Kugeln&`;
+            }
+            //für radiobutton oder chedckbox
+            if (input.checked == true) {
+                if (input.type == "checkbox" || input.type == "radio") {
+                    url += `${input.name}&`;
+                }
+            }
+        }
+        url += preisElement.innerText = String(gesamtPreis.toFixed(2));
+        url += `Euro`;
+        
+        */
+        console.log(url);
+        sendRequest(url, handleOrderResponse);
+    }
+    function handleOrderResponse(_event) {
+        console.log("ordered");
     }
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
@@ -178,15 +189,6 @@ var Eisdealer;
         xhr.addEventListener("readystatechange", _callback);
         xhr.send();
         console.log("request sended");
-    }
-    function handleFindResponse(_event) {
-        let xhr = _event.target;
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output = document.getElementsByTagName("textarea")[0];
-            output.value = xhr.response;
-            let responseAsJson = JSON.parse(xhr.response);
-            console.log(responseAsJson);
-        }
     }
 })(Eisdealer || (Eisdealer = {}));
 //# sourceMappingURL=main.js.map

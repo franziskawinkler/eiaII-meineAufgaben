@@ -46,9 +46,11 @@ export function insert(_doc: EISDEALER): void {
     icecreamType.insertOne(_doc, handleInsert);
     case "toppings":
     toppings.insertOne(_doc, handleInsert);
-    case "order":
-    order.insertOne(_doc, handleInsert);
 }
+}
+
+export function insertOrder(_doc: Object): void {
+    order.insertOne(_doc, handleInsert);
 }
 
 export function remove(_doc: Object): void {

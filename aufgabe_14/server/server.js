@@ -28,6 +28,7 @@ function handleRequest(_request, _response) {
                 id: query["id"],
                 value: parseInt(query["value"])
             };
+            console.log(eisdealer.name);
             Database.insert(eisdealer);
             respond(_response, "storing data");
             break;
@@ -42,13 +43,14 @@ function handleRequest(_request, _response) {
             Database.remove(remove);
             respond(_response, "storing data");
             break;
-        //	case "order":
+        case "order":
+            let order = {
+                icecreamType: query["eissorte"]
+            };
+            Database.insertOrder(order);
+            respond(_response, "storing data");
+            break;
         //		let save: EISDEALER = {
-        //			type: query["type"],
-        //			name: query["name"],
-        //			preis: parseInt(query["preis"]),
-        //			id: query["id"],
-        //			value: parseInt(query["value"]),
         //			schwarzeVanille: query["Schwarze-Vanille"],
         //			sesamDattel: query["Sesam-Dattel"],
         //			waldmeister: query["Waldmeister"],

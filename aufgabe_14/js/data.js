@@ -2,30 +2,30 @@ var Eisdealer;
 (function (Eisdealer) {
     Eisdealer.data = {
         "eissorten": [
-            { type: "number", name: "eissorte", preis: 1, id: "Schwarze-Vanille", value: 0 },
-            { type: "number", name: "eissorte", preis: 1, id: "Sesam-Dattel", value: 0 },
-            { type: "number", name: "eissorte", preis: 1, id: "Waldmeister", value: 0 },
-            { type: "number", name: "eissorte", preis: 1, id: "Orange-Zartbitter", value: 0 },
-            { type: "number", name: "eissorte", preis: 1, id: "Minze-Schoko", value: 0 },
-            { type: "number", name: "eissorte", preis: 1, id: "Latte-Macchiato", value: 0 },
-            { type: "number", name: "eissorte", preis: 1, id: "Granatapfel", value: 0 },
-            { type: "number", name: "eissorte", preis: 1, id: "Erdbeer", value: 0 },
-            { type: "number", name: "eissorte", preis: 1, id: "Schokolade", value: 0 },
-            { type: "number", name: "eissorte", preis: 1, id: "Vanille", value: 0 },
-            { type: "number", name: "eissorte", preis: 1, id: "Straciatella", value: 0 }
+            { type: "eissorte", preis: 1, name: "Schwarze-Vanille", value: 0 },
+            { type: "eissorte", preis: 1, name: "Sesam-Dattel", value: 0 },
+            { type: "eissorte", preis: 1, name: "Waldmeister", value: 0 },
+            { type: "eissorte", preis: 1, name: "Orange-Zartbitter", value: 0 },
+            { type: "eissorte", preis: 1, name: "Minze-Schoko", value: 0 },
+            { type: "eissorte", preis: 1, name: "Latte-Macchiato", value: 0 },
+            { type: "eissorte", preis: 1, name: "Granatapfel", value: 0 },
+            { type: "eissorte", preis: 1, name: "Erdbeer", value: 0 },
+            { type: "eissorte", preis: 1, name: "Schokolade", value: 0 },
+            { type: "eissorte", preis: 1, name: "Vanille", value: 0 },
+            { type: "eissorte", preis: 1, name: "Straciatella", value: 0 }
         ],
         "toppings": [
-            { type: "checkbox", name: "topping", preis: 1.5, id: "Sahne", value: 0 },
-            { type: "checkbox", name: "topping", preis: 1.5, id: "Streusel", value: 0 }
+            { type: "topping", preis: 1.5, name: "Sahne", value: 0 },
+            { type: "topping", preis: 1.5, name: "Streusel", value: 0 }
         ],
         "saucen": [
-            { type: "radio", name: "sauce", preis: 1, id: "Himbeersauce", value: 0 },
-            { type: "radio", name: "sauce", preis: 1, id: "Schokolade-weiss-sauce", value: 0 },
-            { type: "radio", name: "sauce", preis: 1, id: "Schokoladensauce", value: 0 }
+            { type: "sauce", preis: 1, name: "Himbeersauce", value: 0 },
+            { type: "sauce", preis: 1, name: "Schokolade-weiss-sauce", value: 0 },
+            { type: "sauce", preis: 1, name: "Schokoladensauce", value: 0 }
         ],
         "wOb": [
-            { type: "radio", name: "waffelOderBecher", preis: 0, id: "Waffel", value: 0 },
-            { type: "radio", name: "waffelOderBecher", preis: 0, id: "Becher", value: 0 }
+            { type: "waffelOderBecher", preis: 0, name: "Waffel", value: 0 },
+            { type: "waffelOderBecher", preis: 0, name: "Becher", value: 0 }
         ]
     };
 })(Eisdealer || (Eisdealer = {}));
