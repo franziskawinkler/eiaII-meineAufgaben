@@ -78,8 +78,8 @@ function findAll(_callback) {
             _callback("Error" + _e);
         else
             array.concat(auswahlArray);
+        _callback(JSON.stringify(array));
     }
-    _callback(JSON.stringify(array));
 }
 exports.findAll = findAll;
 //# sourceMappingURL=database.js.map

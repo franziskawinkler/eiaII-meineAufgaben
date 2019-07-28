@@ -83,6 +83,6 @@ export function findAll(_callback: Function): void {
             _callback("Error" + _e);
         else
             array.concat(auswahlArray);
+            _callback(JSON.stringify(array));
     }
-    _callback(JSON.stringify(array));
 }
