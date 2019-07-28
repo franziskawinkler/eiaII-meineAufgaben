@@ -72,7 +72,7 @@ function handleInsert(_e: Mongo.MongoError): void {
 }
 
 export function findAll(_callback: Function): void {
-    var cursor: Mongo.Cursor = icecreamType.find();
+    var cursor: Mongo.Cursor = cone.find();
     console.log(cursor);
     cursor.toArray(prepareAnswer);
 
