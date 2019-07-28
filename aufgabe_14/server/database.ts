@@ -7,6 +7,7 @@ let cone: Mongo.Collection;
 let dip: Mongo.Collection;
 let icecreamType: Mongo.Collection;
 let toppings: Mongo.Collection;
+let order: Mongo.Collection;
 
 
 // running on heroku?
@@ -30,6 +31,7 @@ function handleConnect(_e: Mongo.MongoError, _client: Mongo.MongoClient): void {
         dip = db.collection("dip");
         icecreamType = db.collection("icecreamType");
         toppings = db.collection("toppings");
+        order = db.collection("order");
     }
 }
 
@@ -42,6 +44,8 @@ export function insert(_doc: EISDEALER): void {
     icecreamType.insertOne(_doc, handleInsert);
     toppings = db.collection("toppings"),
     toppings.insertOne(_doc, handleInsert);
+    order = db.collection("order"),
+    order.insertOne(_doc, handleInsert);
 }
 
 // insertion-handler receives an error object as standard parameter

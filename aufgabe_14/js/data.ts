@@ -5,8 +5,8 @@ namespace Eisdealer {
         preis: number;
         id: string;
         value: number;
-
     }
+   
     export interface EISDEALER {
         [key: string]: AUSWAHL[];
     }
@@ -40,4 +40,7 @@ namespace Eisdealer {
         ]
 
     };
+
+
 }
+

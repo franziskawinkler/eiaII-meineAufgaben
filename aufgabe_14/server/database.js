@@ -9,6 +9,7 @@ let cone;
 let dip;
 let icecreamType;
 let toppings;
+let order;
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
     //databaseURL = "mongodb+srv://username:password@hostname:port/database"
@@ -28,6 +29,7 @@ function handleConnect(_e, _client) {
         dip = db.collection("dip");
         icecreamType = db.collection("icecreamType");
         toppings = db.collection("toppings");
+        order = db.collection("order");
     }
 }
 function insert(_doc) {
@@ -39,6 +41,8 @@ function insert(_doc) {
         icecreamType.insertOne(_doc, handleInsert);
     toppings = db.collection("toppings"),
         toppings.insertOne(_doc, handleInsert);
+    order = db.collection("order"),
+        order.insertOne(_doc, handleInsert);
 }
 exports.insert = insert;
 // insertion-handler receives an error object as standard parameter
