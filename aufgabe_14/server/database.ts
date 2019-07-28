@@ -37,21 +37,16 @@ function handleConnect(_e: Mongo.MongoError, _client: Mongo.MongoClient): void {
 }
 
 export function insert(_doc: EISDEALER): void {
-    switch (_doc[name]) {
+    switch (_doc.name) {
         case "cone":
-    cone = db.collection("cone"),
     cone.insertOne(_doc, handleInsert);
     case "dip":
-    dip = db.collection("dip"),
     dip.insertOne(_doc, handleInsert);
     case "icecreamType":
-    icecreamType = db.collection("icecreamType"),
     icecreamType.insertOne(_doc, handleInsert);
     case "toppings":
-    toppings = db.collection("toppings"),
     toppings.insertOne(_doc, handleInsert);
     case "order":
-    order = db.collection("order"),
     order.insertOne(_doc, handleInsert);
 }
 }
@@ -73,10 +68,10 @@ function handleInsert(_e: Mongo.MongoError): void {
 }
 
 export function findAll(_callback: Function): void {
-    let cursor: Mongo.Cursor = toppings.find();
     icecreamType.find().toArray(prepareAnswer);
     cone.find().toArray(prepareAnswer);
-    cursor.toArray(sendAnswer);
+    dip.find().toArray(prepareAnswer);
+    toppings.find().toArray(sendAnswer);
 
     function prepareAnswer(_e: Mongo.MongoError, auswahlArray: EISDEALER[]): void {
         if (_e)

@@ -34,22 +34,17 @@ function handleConnect(_e, _client) {
     }
 }
 function insert(_doc) {
-    switch (_doc[name]) {
+    switch (_doc.name) {
         case "cone":
-            cone = db.collection("cone"),
-                cone.insertOne(_doc, handleInsert);
+            cone.insertOne(_doc, handleInsert);
         case "dip":
-            dip = db.collection("dip"),
-                dip.insertOne(_doc, handleInsert);
+            dip.insertOne(_doc, handleInsert);
         case "icecreamType":
-            icecreamType = db.collection("icecreamType"),
-                icecreamType.insertOne(_doc, handleInsert);
+            icecreamType.insertOne(_doc, handleInsert);
         case "toppings":
-            toppings = db.collection("toppings"),
-                toppings.insertOne(_doc, handleInsert);
+            toppings.insertOne(_doc, handleInsert);
         case "order":
-            order = db.collection("order"),
-                order.insertOne(_doc, handleInsert);
+            order.insertOne(_doc, handleInsert);
     }
 }
 exports.insert = insert;
@@ -69,10 +64,10 @@ function handleInsert(_e) {
     console.log("Database insertion returned -> " + _e);
 }
 function findAll(_callback) {
-    let cursor = toppings.find();
     icecreamType.find().toArray(prepareAnswer);
     cone.find().toArray(prepareAnswer);
-    cursor.toArray(sendAnswer);
+    dip.find().toArray(prepareAnswer);
+    toppings.find().toArray(sendAnswer);
     function prepareAnswer(_e, auswahlArray) {
         if (_e)
             _callback("Error" + _e);
