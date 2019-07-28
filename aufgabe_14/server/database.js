@@ -10,6 +10,7 @@ let dip;
 let icecreamType;
 let toppings;
 let order;
+let array = [];
 // running on heroku?
 if (process.env.NODE_ENV == "production") {
     //databaseURL = "mongodb+srv://username:password@hostname:port/database"
@@ -69,13 +70,16 @@ function handleInsert(_e) {
 }
 function findAll(_callback) {
     let cursor = toppings.find();
+    icecreamType.find().toArray(prepareAnswer);
+    cone.find().toArray(prepareAnswer);
     cursor.toArray(prepareAnswer);
     function prepareAnswer(_e, auswahlArray) {
         if (_e)
             _callback("Error" + _e);
         else
-            _callback(JSON.stringify(auswahlArray));
+            array.concat(auswahlArray);
     }
+    _callback(JSON.stringify(array));
 }
 exports.findAll = findAll;
 //# sourceMappingURL=database.js.map

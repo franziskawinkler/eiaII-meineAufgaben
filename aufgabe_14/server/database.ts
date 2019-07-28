@@ -8,6 +8,7 @@ let dip: Mongo.Collection;
 let icecreamType: Mongo.Collection;
 let toppings: Mongo.Collection;
 let order: Mongo.Collection;
+let array: Array<EISDEALER> = [];
 
 
 // running on heroku?
@@ -73,12 +74,15 @@ function handleInsert(_e: Mongo.MongoError): void {
 
 export function findAll(_callback: Function): void {
     let cursor: Mongo.Cursor = toppings.find();
+    icecreamType.find().toArray(prepareAnswer);
+    cone.find().toArray(prepareAnswer);
     cursor.toArray(prepareAnswer);
 
     function prepareAnswer(_e: Mongo.MongoError, auswahlArray: EISDEALER[]): void {
         if (_e)
             _callback("Error" + _e);
         else
-            _callback(JSON.stringify(auswahlArray));
+            array.concat(auswahlArray);
     }
+    _callback(JSON.stringify(array));
 }
