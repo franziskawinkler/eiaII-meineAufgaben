@@ -51,19 +51,25 @@ function insertOrder(_doc) {
 }
 exports.insertOrder = insertOrder;
 function remove(_doc) {
-    cone = db.collection("cone"),
-        cone.insertOne(_doc, handleInsert);
-    dip = db.collection("dip"),
-        dip.insertOne(_doc, handleInsert);
-    icecreamType = db.collection("icecreamType"),
-        icecreamType.insertOne(_doc, handleInsert);
-    toppings = db.collection("toppings"),
-        toppings.insertOne(_doc, handleInsert);
+    var deleteQuery = { _id: _doc.id };
+    switch (_doc.type) {
+        case "cone":
+            cone.deleteOne(deleteQuery, handleRemove);
+        case "dip":
+            dip.deleteOne(deleteQuery, handleRemove);
+        case "icecreamType":
+            icecreamType.deleteOne(deleteQuery, handleRemove);
+        case "toppings":
+            toppings.deleteOne(deleteQuery, handleRemove);
+    }
 }
 exports.remove = remove;
 // insertion-handler receives an error object as standard parameter
 function handleInsert(_e) {
     console.log("Database insertion returned -> " + _e);
+}
+function handleRemove(_e) {
+    console.log("Database dletion returned -> " + _e);
 }
 function findAll(_callback) {
     icecreamType.find().toArray(prepareAnswer);

@@ -38,10 +38,11 @@ function handleRequest(_request, _response) {
             break;
         case "remove":
             let remove = {
-                id: query["id"]
+                id: query["id"],
+                type: query["type"]
             };
             Database.remove(remove);
-            respond(_response, "storing data");
+            respond(_response, "removing data");
             break;
         case "order":
             let order = {

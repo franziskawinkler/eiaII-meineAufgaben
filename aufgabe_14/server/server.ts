@@ -41,11 +41,12 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
 			Database.findAll(findCallback);
 			break;
 		case "remove":
-			let remove = {
-				id: query["id"]
+			let remove: RemoveObject = {
+				id: query["id"],
+				type: query["type"]
 			};
 			Database.remove(remove);
-			respond(_response, "storing data");
+			respond(_response, "removing data");
 			break;
 		case "order":
 				let order: Object = {

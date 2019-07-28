@@ -39,9 +39,10 @@ namespace Eisdealer {
         sendRequest(query, handleFindResponse);
     }
     function remove(): void {
-        let id: HTMLInputElement = <HTMLInputElement>document.getElementById("id");
+        let id: HTMLInputElement = <HTMLInputElement>document.getElementById("delete-id");
+        let type: HTMLInputElement = <HTMLInputElement>document.getElementById("delete-type");
         let query: string = "command=remove";
-        query += "&id=" + id.value;
+        query += "&id=" + id.value + "&type=" + type.value;
         console.log(query);
         sendRequest(query, handleRemoveResponse);
     }

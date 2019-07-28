@@ -37,9 +37,10 @@ var Eisdealer;
     }
     Eisdealer.refresh = refresh;
     function remove() {
-        let id = document.getElementById("id");
+        let id = document.getElementById("delete-id");
+        let type = document.getElementById("delete-type");
         let query = "command=remove";
-        query += "&id=" + id.value;
+        query += "&id=" + id.value + "&type=" + type.value;
         console.log(query);
         sendRequest(query, handleRemoveResponse);
     }

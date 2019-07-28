@@ -8,4 +8,8 @@ preis: number;
 id: string;
 value: number;
 }
+interface RemoveObject {
+    id: string;
+    type: string;
+}
 
