@@ -87,4 +87,15 @@ function findAll(_callback) {
     }
 }
 exports.findAll = findAll;
+function loadOrder(_callback) {
+    order.find().toArray(sendAnswer);
+    function sendAnswer(_e, orderArray) {
+        if (_e)
+            _callback("Error" + _e);
+        else {
+            _callback(JSON.stringify(orderArray));
+        }
+    }
+}
+exports.loadOrder = loadOrder;
 //# sourceMappingURL=database.js.map

@@ -91,3 +91,15 @@ export function findAll(_callback: Function): void {
         }
     }
 }
+
+export function loadOrder(_callback: Function): void {
+    order.find().toArray(sendAnswer);
+
+    function sendAnswer(_e: Mongo.MongoError, orderArray: []): void {
+        if (_e)
+            _callback("Error" + _e);
+        else {
+            _callback(JSON.stringify(orderArray));
+        }
+    }
+}

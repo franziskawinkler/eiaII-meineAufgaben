@@ -54,7 +54,7 @@ var Eisdealer;
                     let topping = toppings[i];
                     fieldset +=
                         `                   
-                        <input type="checkbox" name="${topping.name}" value="ja" id="${topping.name}" data-preis="${topping.preis}"/>
+                        <input type="checkbox" name="${topping.name}" value="ja" id="${topping.name}" data-type="${topping.type}" data-preis="${topping.preis}"/>
                         <label for="${topping.name}">${topping.name}</label>
                         <br>
                         `;
@@ -72,7 +72,7 @@ var Eisdealer;
                     let sauce = saucen[i];
                     fieldset +=
                         `                   
-                        <input type="radio" name="${sauce.name}" value="${sauce.name}" id="${sauce.name}" data-preis="${sauce.preis}"/>
+                        <input type="radio" name="${sauce.name}" value="${sauce.name}" id="${sauce.name}"  data-type="${sauce.type}" data-preis="${sauce.preis}"/>
                         <label for="${sauce.name}">${sauce.name}</label>
                         <br>
                         `;
@@ -89,7 +89,7 @@ var Eisdealer;
                     let behälter = wOb[i];
                     fieldset +=
                         `                   
-                        <input type="radio" name="${behälter.name}" value="${behälter.name}" id="${behälter.name}" data-preis="${behälter.preis}"/>
+                        <input type="radio" name="${behälter.name}" value="${behälter.name}" id="${behälter.name}"  data-type="${behälter.type}"data-preis="${behälter.preis}"/>
                         <label for="${behälter.name}">${behälter.name}</label>
                         <br>`;
                 }
@@ -148,40 +148,58 @@ var Eisdealer;
     }
     function order() {
         console.log("order...");
-        let url = "command=order?eissorte=";
+        let url = "command=order&eissorte=";
         let eissortenInputs;
         eissortenInputs = document.querySelectorAll("[data-type=\"eissorte\"]");
         for (let i = 0; i < eissortenInputs.length; i++) {
             let input = eissortenInputs[i];
             //wenn der typ der input elemente number ist (=eissorten) und die anzahl größer null ist dann soll dies in die URL hinzugefügt werden
             if (input.value > "0") {
-                url += `${input.name}:${input.value}Kugeln&`;
+                url += `${input.name}:${input.value}Kugeln;`;
             }
         }
-        /*
-        for (let i: number = 0; i < inputs.length; i++) {
-            debugger;
-            let input: HTMLInputElement = inputs[i];
-            //wenn der typ der input elemente number ist (=eissorten) und die anzahl größer null ist dann soll dies in die URL hinzugefügt werden
-            if (input.type == "number" && input.value > "0") {
-                url += `${input.name}:${input.value}Kugeln&`;
-            }
-            //für radiobutton oder chedckbox
-            if (input.checked == true) {
-                if (input.type == "checkbox" || input.type == "radio") {
-                    url += `${input.name}&`;
+        let toppingInputs;
+        toppingInputs = document.querySelectorAll("[data-type=\"topping\"]");
+        let firstTopping = true;
+        for (let i = 0; i < toppingInputs.length; i++) {
+            let input = toppingInputs[i];
+            if (input.checked) {
+                if (firstTopping) {
+                    url += "&topping=";
+                    firstTopping = false;
                 }
+                url += `${input.name};`;
             }
         }
-        url += preisElement.innerText = String(gesamtPreis.toFixed(2));
-        url += `Euro`;
-        
-        */
+        let sauceInputs;
+        sauceInputs = document.querySelectorAll("[data-type=\"sauce\"]");
+        for (let i = 0; i < sauceInputs.length; i++) {
+            let input = sauceInputs[i];
+            if (input.checked) {
+                url += "&sauce=";
+                url += `${input.name};`;
+            }
+        }
+        let behälterInputs;
+        behälterInputs = document.querySelectorAll("[data-type=\"behälter\"]");
+        for (let i = 0; i < behälterInputs.length; i++) {
+            let input = behälterInputs[i];
+            if (input.checked) {
+                url += "&behälter=";
+                url += `${input.name};`;
+            }
+        }
+        url += "&preis=" + String(gesamtPreis.toFixed(2));
+        let nameElement = document.getElementById("customer-name");
+        //url += "&name=" + nameElement.value;
         console.log(url);
         sendRequest(url, handleOrderResponse);
     }
     function handleOrderResponse(_event) {
-        console.log("ordered");
+        let xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            alert("Deine Bestellung war erfolgreich!");
+        }
     }
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();

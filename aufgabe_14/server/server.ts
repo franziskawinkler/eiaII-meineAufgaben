@@ -49,35 +49,17 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
 			break;
 		case "order":
 				let order: Object = {
-					icecreamType: query["eissorte"]
+					icecreamType: query["eissorte"],
+					toppings: query["topping"],
+					dip: query["sauce"],
+					cone: query["behälter"],
+					preis: query["preis"]
 				};
 				Database.insertOrder(order);
 				respond(_response, "storing data");
-				break;
-
-		//		let save: EISDEALER = {
-		//			schwarzeVanille: query["Schwarze-Vanille"],
-		//			sesamDattel: query["Sesam-Dattel"],
-		//			waldmeister: query["Waldmeister"],
-		//			orangeZartbitter: query["Orange-Zartbitter"],
-		//			minzeSchoko: query["Minze-Schoko"],
-		//			latteMacchiato: query["Latte-Macchiato"],
-		//			granatapfel: query["Granatapfel"],
-		//		erdbeer: query["Erdbeer"],
-		///			schokolade: query["Schokolade"],
-		//		vanille: query["Vanille"],
-		//		straciatella: query["Straciatella"],
-		//		sahne: query["Sahne"],
-		//		streusel: query["Streusel"],
-		//		himbeersauce: query["Himbeersauce"],
-		//		schokoladeWeissSauce: query["Schokolade-weiss-sauce"],
-		//		schokoladensauce: query["Schokoladensauce"],
-		//		waffel: query["Waffel"],
-		//		becher: query["Becher"]
-		//	};
-		//	Database.insert(save);
-		//	respond(_response, "storing data");
-
+				break;		
+		case "loadOrder":
+			Database.loadOrder(findCallback);
 		default:
 			respond(_response, "unknown command: " + command);
 			break;
